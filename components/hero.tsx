@@ -225,32 +225,41 @@ import React from 'react'
 
 function hero() {
   return (
-    <section className="hero bg-gray-50 ">
+    <section className="hero  pb-10">
+      <style jsx>{`
+         {
+          background-color: #E5D9F2;
+        }
+      `}</style>
 <div className="container mx-auto px-4">
   <div className="flex flex-col md:flex-row ">
-    <div className="md:w-1/2 mb-10 ml-10 md:mb-0 mt-6 ">
-      <h1 className="text-4xl md:text-5xl  font-bold mb-4 text-brand-primary">Get Services Delivered at Your Doorstep!</h1>
-      <p className="text-xl mb-6">Quick, reliable, and professional services available with a tap on the app.</p>
-      <div className="flex space-x-12 mb-4 mt-12  ">
-      <Link href="https://apps.apple.com/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-2.5 px-4 sm:px-6 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 384 512">
-                  <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-                </svg>
-                <span className="ml-2 sm:ml-4 flex flex-col items-start  leading-none">
-                  <span className="text-xs">Download on the</span>
-                  <span className="font-semibold">App Store</span>
-                </span>
+    <div className="md:w-1/2 mb-10 md:mb-0 flex flex-col mt-12 items-start justify-center px-6 md:px-12 py-8 bg-gradient-to-br  rounded-3xl ">
+      <h1 className="text-4xl md:text-5xl font-bold mb-6 text-brand-primary text-left leading-tight">Get Services Delivered at Your Doorstep!</h1>
+      <p className="text-md md:text-xl mb-8 text-brand-secondary text-left">Quick, reliable, and professional services available with a tap on the app.</p>
+
+        <Link href="/systems/services" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full shadow-md text-white bg-black hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 mb-10">
+          View our Services
         </Link>
-            <Link href="https://play.google.com/store/apps/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-2.5 px-4 sm:px-6 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 512 512">
-                 <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
-                </svg>
-                <span className="ml-2 sm:ml-4 flex flex-col items-start leading-none">
-                 <span className="text-xs">GET IT ON</span>
-                 <span className="font-semibold">Google Play</span>
-                </span>
+        <h5 className="text-2xl text-brand-primary text-left mb-6 font-semibold">Download our app</h5>
+      <div className="flex space-x-6 mb-6">
+        <Link href="https://apps.apple.com/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-3 px-6 sm:px-8 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 384 512">
+            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+          </svg>
+          <span className="ml-3 sm:ml-4 flex flex-col items-start leading-none">
+            <span className="text-xs">Download on the</span>
+            <span className="font-semibold">App Store</span>
+          </span>
         </Link>
-               
+        <Link href="https://play.google.com/store/apps/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-3 px-6 sm:px-8 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 512 512">
+            <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
+          </svg>
+          <span className="ml-3 sm:ml-4 flex flex-col items-start leading-none">
+            <span className="text-xs">GET IT ON</span>
+            <span className="font-semibold">Google Play</span>
+          </span>
+        </Link>
       </div>
       <div className="mt-12 flex justify-center items-center">
         {/* <Link href="/demo" className="inline-flex items-center px-44 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-black hover:bg-gray-300 transition-all duration-300 transform hover:scale-105">
