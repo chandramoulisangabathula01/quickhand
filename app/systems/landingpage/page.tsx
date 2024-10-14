@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
@@ -62,7 +63,199 @@ const LandingPage: React.FC = () => {
   return (
     <>
     <div className="landing-page bg-white text-gray-800">
-      {/* Hero Section */}
+     
+      {/* Key Features Section */}
+
+      <Hero />
+      <motion.section
+        ref={ref}
+        initial="hidden"
+        animate={controls}
+        variants={staggerChildren}
+        className="features  py-20"
+        style={{ backgroundColor: "#B7B7B7" }}
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12">Why Choose Us?</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: "calendar", alt: "Easy Booking", title: "Easy Booking", description: "Find and book services quickly." },
+              { icon: "user-check", alt: "Verified Professionals", title: "Verified Professionals", description: "Trusted, qualified experts at your service." },
+              { icon: "map-pin", alt: "Real-Time Tracking", title: "Real-Time Tracking", description: "Track your service provider's arrival." },
+              { icon: "star", alt: "Superior Service", title: "Superior Service", description: "Unmatched quality and reliability " }
+            ].map((feature, index) => (
+              <motion.div key={index} variants={fadeInUp} className="text-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mb-4"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto text-brand-primary">
+                    {feature.icon === "calendar" && (
+                      <path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8zM3 10h18M8 2v4M16 2v4" />
+                    )}
+                    {feature.icon === "user-check" && (
+                      <>
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <polyline points="16 11 18 13 22 9" />
+                      </>
+                    )}
+                    {feature.icon === "map-pin" && (
+                      <>
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </>
+                    )}
+                    {feature.icon === "dollar-sign" && (
+                      <>
+                        <line x1="12" y1="1" x2="12" y2="23" />
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      </>
+                    )}
+                     {feature.icon === "star" && (
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        )}
+                  </svg>
+                </motion.div>
+                <h3 className="text-xl font-semibold mb-2 text-brand-secondary">{feature.title}</h3>
+                <p>{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div variants={fadeInUp} className="text-center mt-12">
+            <Link href="/systems/How-It-Works" className="inline-block bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-full hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+              <span className="flex items-center">
+                <span>Learn more about how it works</span>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </Link>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      
+      {/* Our Services Section */}
+      <section className="our-services py-20 bg-gray-100">
+        <div className="container mx-auto px-36">
+          <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Drivers Card */}
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
+              <img src="/1.png" alt="Driver Service" className="w-48 h-48 object-cover mt-6" />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Drivers</h3>
+                <p className="text-gray-600">Professional drivers at your service. Whether you need a ride to the airport or a chauffeur for a special event, our skilled drivers ensure a safe and comfortable journey.</p>
+              </div>
+            </div>
+
+            {/* Chefs Card */}
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
+              <img src="/3.png" alt="Driver Service" className="w-48 h-48 object-cover mt-6" />
+              <div className="p-6 text-center">
+              <h3 className="text-2xl font-semibold mb-2">Chefs</h3>
+              <p className="text-gray-600">Experienced chefs ready to create culinary delights in your home. From intimate dinners to large gatherings, our chefs bring restaurant-quality meals to your table.</p>
+              </div>
+            </div>
+
+            
+
+           
+            {/* Caretakers Card */}
+            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
+              <img src="/2.png" alt="Caretaker Service" className="w-48 h-42 object-cover mt-6" />
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold mb-2">Caretakers</h3>
+                <p className="text-gray-600">Compassionate caretakers providing attentive care for your loved ones. Our trained professionals offer personalized support, ensuring comfort and well-being for those in need.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* App Demo Section */}
+      <motion.section
+        initial="hidden"
+        animate={controls}
+        variants={staggerChildren}
+        className="app-demo bg-gray-50 "
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12 text-brand-primary">See How It Works!</motion.h2>
+          <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
+            <div className="aspect-w-16 aspect-h-9 mb-8">
+              <video controls
+                
+                // src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1&playlist=dQw4w9WgXcQ" 
+                src="/videos/app_demo.mp4" 
+                title="App Demo Video"
+                autoPlay
+                loop
+                muted
+
+                // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                // allowFullScreen
+                className="rounded-lg shadow-md h-100% w-100% justify-center items-center"
+              />
+            </div>
+            <div className="text-center space-x-4 mt-8">
+             
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Testimonials Section */}
+      <motion.section
+        initial="hidden"
+        animate={controls}
+        variants={staggerChildren}
+        className="testimonials py-20 px-12"
+        style={{ backgroundColor: "#B7B7B7" }}
+      >
+        <div className="container mx-auto px-4">
+          <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center mb-16 text-black">Voices of Excellence</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              { quote: "Transformed my approach to home services. Expert assistance at my fingertips!", name: "Sarah Johnson", role: "Homeowner", image: "/customer1.png" },
+              { quote: "The real-time tracking feature is revolutionary. It's elevated our entire business model.", name: "Michael Chen", role: "Startup Founder", image: "/customer2.png" },
+              { quote: "Unparalleled quality of professionals. Every service has been nothing short of outstanding.", name: "Olivia Rodriguez", role: "Property Manager", image: "/customer3.png" }
+            ].map((testimonial, index) => (
+              <motion.div key={index} variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200">
+                <div className="flex items-center mb-6">
+                  <Image src={testimonial.image} alt={testimonial.name} width={64} height={64} className="rounded-full mr-4 border-2 border-brand-primary" />
+                  <div>
+                    <p className="font-semibold text-lg text-brand-primary">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
+                <div className="flex justify-end">
+                  <svg className="w-6 h-6 text-brand-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+    </div>
+      
+        <Footer />
+      
+      </>
+  );
+};
+
+export default LandingPage;
+
+
+
+
+
+
       {/* <motion.section
 
         initial={{ opacity: 0 }}
@@ -213,169 +406,4 @@ const LandingPage: React.FC = () => {
             </motion.div>
           </div>
         </div>
-      </motion.section>
-
-      
-
-      {/* Key Features Section */}
-
-      <Hero />
-      <motion.section
-        ref={ref}
-        initial="hidden"
-        animate={controls}
-        variants={staggerChildren}
-        className="features  py-20"
-        style={{ backgroundColor: "#B7B7B7" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12">Why Choose Us?</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: "calendar", alt: "Easy Booking", title: "Easy Booking", description: "Find and book services quickly." },
-              { icon: "user-check", alt: "Verified Professionals", title: "Verified Professionals", description: "Trusted, qualified experts at your service." },
-              { icon: "map-pin", alt: "Real-Time Tracking", title: "Real-Time Tracking", description: "Track your service provider's arrival." },
-              { icon: "dollar-sign", alt: "Affordable Pricing", title: "Affordable Pricing", description: "Clear and competitive rates." }
-            ].map((feature, index) => (
-              <motion.div key={index} variants={fadeInUp} className="text-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mb-4"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto text-brand-primary">
-                    {feature.icon === "calendar" && (
-                      <path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8zM3 10h18M8 2v4M16 2v4" />
-                    )}
-                    {feature.icon === "user-check" && (
-                      <>
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <polyline points="16 11 18 13 22 9" />
-                      </>
-                    )}
-                    {feature.icon === "map-pin" && (
-                      <>
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </>
-                    )}
-                    {feature.icon === "dollar-sign" && (
-                      <>
-                        <line x1="12" y1="1" x2="12" y2="23" />
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                      </>
-                    )}
-                  </svg>
-                </motion.div>
-                <h3 className="text-xl font-semibold mb-2 text-brand-secondary">{feature.title}</h3>
-                <p>{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div variants={fadeInUp} className="text-center mt-12">
-            <Link href="/systems/How-It-Works" className="inline-block bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-full hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
-              <span className="flex items-center">
-                <span>Learn more about how it works</span>
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* App Demo Section */}
-      <motion.section
-        initial="hidden"
-        animate={controls}
-        variants={staggerChildren}
-        className="app-demo bg-gray-50 py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12 text-brand-primary">See How It Works!</motion.h2>
-          <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
-            <div className="aspect-w-16 aspect-h-9 mb-8">
-              <iframe 
-                width="100%" 
-                height="500" 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1&playlist=dQw4w9WgXcQ" 
-                title="App Demo Video"
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-                className="rounded-lg shadow-md"
-              ></iframe>
-            </div>
-            <div className="text-center space-x-4 mt-8">
-              {/* <Link href="https://apps.apple.com/your-app" className="bg-black hover:bg-gray-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 inline-block transform hover:scale-105 shadow-md">
-                Download the App Now
-              </Link> */}
-              <Link href="https://apps.apple.com/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-3 px-6 sm:px-8 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 384 512">
-            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-          </svg>
-          <span className="ml-3 sm:ml-4 flex flex-col items-start leading-none">
-            <span className="text-xs">Download on the</span>
-            <span className="font-semibold">App Store</span>
-          </span>
-        </Link>
-        <Link href="https://play.google.com/store/apps/your-app" className="flex-grow sm:flex-grow-0 inline-flex items-center justify-center border-2 border-black rounded-full bg-black py-3 px-6 sm:px-8 text-white transition-all duration-200 ease-in-out hover:bg-transparent hover:text-black transform hover:scale-105">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 512 512">
-            <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
-          </svg>
-          <span className="ml-3 sm:ml-4 flex flex-col items-start leading-none">
-            <span className="text-xs">GET IT ON</span>
-            <span className="font-semibold">Google Play</span>
-          </span>
-        </Link>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Testimonials Section */}
-      <motion.section
-        initial="hidden"
-        animate={controls}
-        variants={staggerChildren}
-        className="testimonials py-20 "
-        style={{ backgroundColor: "#B7B7B7" }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center mb-16 text-black">Voices of Excellence</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              { quote: "Transformed my approach to home services. Expert assistance at my fingertips!", name: "Sarah Johnson", role: "Homeowner", image: "/customer1.png" },
-              { quote: "The real-time tracking feature is revolutionary. It's elevated our entire business model.", name: "Michael Chen", role: "Startup Founder", image: "/customer2.png" },
-              { quote: "Unparalleled quality of professionals. Every service has been nothing short of outstanding.", name: "Olivia Rodriguez", role: "Property Manager", image: "/customer3.png" }
-            ].map((testimonial, index) => (
-              <motion.div key={index} variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200">
-                <div className="flex items-center mb-6">
-                  <Image src={testimonial.image} alt={testimonial.name} width={64} height={64} className="rounded-full mr-4 border-2 border-brand-primary" />
-                  <div>
-                    <p className="font-semibold text-lg text-brand-primary">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
-                <div className="flex justify-end">
-                  <svg className="w-6 h-6 text-brand-primary" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-    </div>
-      
-        <Footer />
-      
-      </>
-  );
-};
-
-export default LandingPage;
+      </motion.section> */}

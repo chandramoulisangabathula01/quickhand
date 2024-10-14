@@ -41,12 +41,15 @@ const Navbar: React.FC = () => {
             <rect width="7" height="7" x="14" y="3" rx="1"></rect>
             <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"></path>
           </motion.svg>
+          <h2 className='gap-2 font-bold text-xl'>QuickHands</h2>
         </Link>
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-12">
           <NavLinks />
-        </div>
-        <div className="hidden md:flex lg:hidden xl:flex space-x-4">
-          <AppStoreBadges />
+          <Link href="https://apps.apple.com/your-app" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-3 px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+            <span className="flex flex-col items-start leading-none">
+              <p className="text-lg sm:text-xl font-bold">Download App</p>
+            </span>
+          </Link>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}

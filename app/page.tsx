@@ -12,7 +12,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className=" ">
+    <div className=" scroll-smooth overflow-hidden">
       <Navbar />
       {/* <main className="flex flex-col items-center justify-center min-h-screen py-2">
         <h1 className="text-4xl font-bold mb-4 opacity-0 title">Welcome to Our Service</h1>
