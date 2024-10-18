@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
         </Link>
         <div className="hidden md:flex items-center space-x-12">
           <NavLinks />
-          <Link href="https://apps.apple.com/your-app" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-3 px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+          <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-3 px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
             <span className="flex flex-col items-start leading-none">
               <p className="text-lg sm:text-xl font-bold">Download App</p>
             </span>

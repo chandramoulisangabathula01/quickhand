@@ -23,7 +23,7 @@ function Hero() {
               <Link href="/systems/services" className="inline-flex items-center justify-center px-8 sm:px-16 py-3 sm:py-6 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-md text-white bg-black hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
                 View our Services
               </Link>
-              <Link href="https://apps.apple.com/your-app" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md bg-transparent py-3 px-6 text-black bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+              <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md bg-transparent py-3 px-6 text-black bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
                 <span className="flex flex-col items-start leading-none">
                   <p className="text-lg sm:text-xl font-bold">Download App</p>
                 </span>
@@ -152,7 +152,9 @@ const cards = [
     id: 4,
     content: <SkeletonFour />,
     className: "md:col-span-2",
-    video: "/videos/elderlyCareClip.mp4",
+    // video: "/videos/elderlyCareClip.mp4",
+    video: "/videos/ProDriverClip.mp4",
+
     thumbnail: "",
   },
 ];

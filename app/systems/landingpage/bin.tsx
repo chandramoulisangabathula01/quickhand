@@ -245,3 +245,7 @@
 //     </BentoGrid>
 //   );
 // }
+
+
+
+// use gsap and scrolltrigger and  framer motion when i scroll screen should fix the images and content should change

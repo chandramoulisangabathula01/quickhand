@@ -73,7 +73,7 @@ const LandingPage: React.FC = () => {
         animate={controls}
         variants={staggerChildren}
         className="features  py-20"
-        style={{ backgroundColor: "#B7B7B7" }}
+        // style={{ backgroundColor: "#B7B7B7" }}
       >
         <div className="container mx-auto px-4">
           <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12">Why Choose Us?</motion.h2>
@@ -138,37 +138,34 @@ const LandingPage: React.FC = () => {
 
       
       {/* Our Services Section */}
-      <section className="our-services py-20 bg-gray-100">
-        <div className="container mx-auto px-36">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="our-services py-12 sm:py-16 md:py-20 bg-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-36">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Drivers Card */}
             <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/1.png" alt="Driver Service" className="w-48 h-48 object-cover mt-6" />
-              <div className="p-6 text-center">
-                <h3 className="text-2xl font-semibold mb-2">Drivers</h3>
-                <p className="text-gray-600">Professional drivers at your service. Whether you need a ride to the airport or a chauffeur for a special event, our skilled drivers ensure a safe and comfortable journey.</p>
+              <img src="/1.png" alt="Driver Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
+              <div className="p-4 sm:p-6 text-center">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2">Drivers</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Professional drivers at your service. Whether you need a ride to the airport or a chauffeur for a special event, our skilled drivers ensure a safe and comfortable journey.</p>
               </div>
             </div>
 
             {/* Chefs Card */}
             <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/3.png" alt="Driver Service" className="w-48 h-48 object-cover mt-6" />
-              <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold mb-2">Chefs</h3>
-              <p className="text-gray-600">Experienced chefs ready to create culinary delights in your home. From intimate dinners to large gatherings, our chefs bring restaurant-quality meals to your table.</p>
+              <img src="/3.png" alt="Chef Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
+              <div className="p-4 sm:p-6 text-center">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2">Chefs</h3>
+              <p className="text-gray-600 text-sm sm:text-base">Experienced chefs ready to create culinary delights in your home. From intimate dinners to large gatherings, our chefs bring restaurant-quality meals to your table.</p>
               </div>
             </div>
 
-            
-
-           
             {/* Caretakers Card */}
             <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/2.png" alt="Caretaker Service" className="w-48 h-42 object-cover mt-6" />
-              <div className="p-6 text-center">
-                <h3 className="text-2xl font-semibold mb-2">Caretakers</h3>
-                <p className="text-gray-600">Compassionate caretakers providing attentive care for your loved ones. Our trained professionals offer personalized support, ensuring comfort and well-being for those in need.</p>
+              <img src="/2.png" alt="Caretaker Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
+              <div className="p-4 sm:p-6 text-center">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2">Caretakers</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Coming Soon</p>
               </div>
             </div>
           </div>
@@ -179,7 +176,7 @@ const LandingPage: React.FC = () => {
         initial="hidden"
         animate={controls}
         variants={staggerChildren}
-        className="app-demo bg-gray-50 "
+        className="app-demo mt-20"
       >
         <div className="container mx-auto px-4">
           <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12 text-brand-primary">See How It Works!</motion.h2>
@@ -212,7 +209,7 @@ const LandingPage: React.FC = () => {
         animate={controls}
         variants={staggerChildren}
         className="testimonials py-20 px-12"
-        style={{ backgroundColor: "#B7B7B7" }}
+        // style={{ backgroundColor: "#B7B7B7" }}
       >
         <div className="container mx-auto px-4">
           <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center mb-16 text-black">Voices of Excellence</motion.h2>
@@ -241,7 +238,32 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </motion.section>
-    </div>
+
+
+{/* DOWNLOAD SECTION */}
+
+      <div id="download" className="bg-gray-100"
+      // style={{ backgroundColor: "#B7B7B7" }}
+      >
+        <div className="container mx-auto  flex flex-col lg:flex-row items-center">
+          <div className="lg:w-1/2 mb-8 lg:mb-0">
+            <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg" />
+          </div>
+          <div className="lg:w-1/2 right-0 lg:pl-12">
+            <h2 className="text-4xl font-bold mb-8 text-black">Ready to Experience Premium Service?</h2>
+            <p className="text-2xl mb-8 text-gray-700">Download our app now and unlock a world of convenience!</p>
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+              <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
+                <Image src="/apple_badge.png" alt="Download on App Store" width={200} height={60} className="rounded-lg shadow-md" />
+              </Link>
+              <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
+                <Image src="/google_badge.png" alt="Get it on Google Play" width={200} height={60} className="rounded-lg shadow-md" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       
         <Footer />
       
