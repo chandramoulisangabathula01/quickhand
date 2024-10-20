@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { motion,  } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -13,136 +13,58 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ServicesPage: React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null);
-  // const controls = useAnimation();
 
   useEffect(() => {
-    if (mainRef.current) {
-      // GSAP animations
-      gsap.fromTo('.service-section', 
-        {
-          opacity: 0,
-          y: 50
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
+    const sections = [
+      { className: '.service-section', start: 'top 80%', end: 'bottom 20%' },
+      { className: '.how-it-works-item', start: 'top 70%', end: 'bottom 20%' },
+      { className: '.why-choose-us-item', start: 'top 70%', end: 'bottom 20%' },
+      { className: '.impact-item', start: 'top 70%', end: 'bottom 20%' },
+      { className: '.download-section', start: 'top 80%', end: 'bottom 20%' },
+    ];
+
+    sections.forEach(({ className, start, end }) => {
+      gsap.fromTo(className, 
+        { opacity: 0, y: 50 }, 
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8, 
+          ease: 'power3.out', 
           scrollTrigger: {
-            trigger: '.service-section',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            // markers: true,
+            trigger: className,
+            start: start,
+            end: end,
             toggleActions: 'play none none reverse',
           },
         }
       );
-    }
+    });
+
+    // Parallax effect for background
+    gsap.fromTo('.parallax-bg',
+      { backgroundPosition: '50% 0%' },
+      {
+        backgroundPosition: '50% 100%',
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: '.parallax-bg',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      }
+    );
+
   }, []); // Added empty dependency array to useEffect
 
-  gsap.fromTo('.how-it-works-item', 
-    {
-      opacity: 0,
-      y: 50
-    },
-    {
-      opacity: 1,
-      y: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: 'back.out(1.7)',
-      scrollTrigger: {
-        trigger: '.how-it-works-section',
-        start: 'top 70%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none none',
-      },
-    }
-  );
-
-  // Parallax effect for background
-  gsap.fromTo('.parallax-bg',
-    {
-      backgroundPosition: '50% 0%'
-    },
-    {
-      backgroundPosition: '50% 100%',
-      ease: 'back.out(1.7)',
-      scrollTrigger: {
-        trigger: '.parallax-bg',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    }
-  );
-
-  // New ScrollTrigger animations
-  gsap.fromTo('.why-choose-us-item',
-    {
-      opacity: 0,
-      y: 50
-    },
-    {
-      opacity: 1,
-      y: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: '.why-choose-us-section',
-        start: 'top 70%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse',
-      },
-    }
-  );
-
-  gsap.fromTo('.impact-item',
-    {
-      opacity: 0,
-      scale: 0.8
-    },
-    {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.2,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: '.impact-section',
-        start: 'top 70%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse',
-      },
-    }
-  );
-
-  gsap.fromTo('.download-section',
-    {
-      opacity: 0,
-      y: 50
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: '.download-section',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none none',
-      },
-    }
-  );
-
-  return ( // Moved return statement inside the component
+  return (
     <div className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900 scroll-smooth overflow-hidden" ref={mainRef}>
       <Navbar />
 
-    
-
       <main className="container mx-auto lg:py-20 py-10 px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-4xl font-bold text-center   text-black"
+          className="text-4xl font-bold text-center text-black"
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: -50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -231,7 +153,8 @@ const ServicesPage: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Indulge in restaurant-quality cuisine from the comfort of your home. Our skilled chefs bring culinary excellence to your kitchen.              </motion.p>
+                Indulge in restaurant-quality cuisine from the comfort of your home. Our skilled chefs bring culinary excellence to your kitchen.              
+              </motion.p>
               <motion.ul
                 className="space-y-4 mb-8 text-gray-800"
                 initial="hidden"
