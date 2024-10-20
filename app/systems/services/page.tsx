@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { motion, useAnimation } from 'framer-motion';
+import { motion,  } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -13,78 +13,145 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ServicesPage: React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimation();
+  // const controls = useAnimation();
 
   useEffect(() => {
     if (mainRef.current) {
       // GSAP animations
-      gsap.from('.service-section', {
-        opacity: 1,
-        y: 100,
-        stagger: 0.3,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.service-section',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+      gsap.fromTo('.service-section', 
+        {
+          opacity: 0,
+          y: 50
         },
-      });
-
-      gsap.from('.how-it-works-item', {
-        opacity: 1,
-        y: 50,
-        // stagger: 0.1,
-        duration: 0.8,
-        ease: 'back.out(1.7)',
-        scale: 0.8,
-        scrollTrigger: {
-          trigger: '.how-it-works-section',
-          start: 'top 70%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none none',
-          markers: true,
-        },
-      });
-
-      // Parallax effect for background
-      gsap.to('.parallax-bg', {
-        backgroundPosition: '50% 100%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.parallax-bg',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.service-section',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            // markers: true,
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     }
+  }, []); // Added empty dependency array to useEffect
 
-    // Framer Motion animations
-    controls.start(i => ({
+  gsap.fromTo('.how-it-works-item', 
+    {
+      opacity: 0,
+      y: 50
+    },
+    {
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2 },
-    }));
-  }, [controls]);
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.how-it-works-section',
+        start: 'top 70%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
 
-  return (
-    <div className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900" ref={mainRef}>
+  // Parallax effect for background
+  gsap.fromTo('.parallax-bg',
+    {
+      backgroundPosition: '50% 0%'
+    },
+    {
+      backgroundPosition: '50% 100%',
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.parallax-bg',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    }
+  );
+
+  // New ScrollTrigger animations
+  gsap.fromTo('.why-choose-us-item',
+    {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: '.why-choose-us-section',
+        start: 'top 70%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
+
+  gsap.fromTo('.impact-item',
+    {
+      opacity: 0,
+      scale: 0.8
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      stagger: 0.2,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: '.impact-section',
+        start: 'top 70%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
+
+  gsap.fromTo('.download-section',
+    {
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: '.download-section',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
+
+  return ( // Moved return statement inside the component
+    <div className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900 scroll-smooth overflow-hidden" ref={mainRef}>
       <Navbar />
-      
-      <main className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        <motion.h1 
-          className="text-5xl font-extrabold text-center   text-black"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+
+    
+
+      <main className="container mx-auto lg:py-20 py-10 px-4 sm:px-6 lg:px-8">
+        <motion.h1
+          className="text-4xl font-bold text-center   text-black"
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: -50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           Explore Our Services
         </motion.h1>
 
         {/* Driver Services */}
-        <section className="service-section mb-32">
+        <section className="service-section mb-36 ">
           <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
             <div className="lg:w-1/2 mb-12 lg:ml-12 lg:mb-0 ">
               <motion.div
@@ -96,15 +163,15 @@ const ServicesPage: React.FC = () => {
               </motion.div>
             </div>
             <div className="lg:w-1/2 ">
-              <motion.h2 
-                className="text-4xl font-bold mb-8 text-black"
+              <motion.h2
+                className="text-3xl font-bold mb-8 text-black"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Your Personal Driver, One Click Away
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-xl mb-8 text-gray-700 leading-relaxed"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -112,7 +179,7 @@ const ServicesPage: React.FC = () => {
               >
                 Experience stress-free transportation with our punctual and courteous drivers, ready to make your journey smooth and comfortable.
               </motion.p>
-              <motion.ul 
+              <motion.ul
                 className="space-y-4 mb-8 text-gray-800"
                 initial="hidden"
                 animate="visible"
@@ -121,8 +188,8 @@ const ServicesPage: React.FC = () => {
                 }}
               >
                 {['Safe and reliable transportation', 'Professional and courteous drivers', 'Available for various needs: errands, appointments, and more'].map((item, index) => (
-                  <motion.li 
-                    key={index} 
+                  <motion.li
+                    key={index}
                     className="flex items-center text-lg"
                     variants={{
                       hidden: { opacity: 0, x: -20 },
@@ -138,7 +205,7 @@ const ServicesPage: React.FC = () => {
               </motion.ul>
             </div>
           </div>
-          
+
           <div className="flex flex-col lg:flex-row-reverse items-center justify-between">
             <div className="lg:w-1/2 mb-12 lg:mr-12 lg:mb-0 ">
               <motion.div
@@ -150,22 +217,22 @@ const ServicesPage: React.FC = () => {
               </motion.div>
             </div>
             <div className="lg:w-1/2 lg:ml-12">
-              <motion.h2 
-                className="text-4xl font-bold mb-8 text-black"
+              <motion.h2
+                className="text-3xl font-bold mb-8 text-black"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Gourmet Dining at Your Doorstep
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-xl mb-8 text-gray-700 leading-relaxed"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 Indulge in restaurant-quality cuisine from the comfort of your home. Our skilled chefs bring culinary excellence to your kitchen.              </motion.p>
-              <motion.ul 
+              <motion.ul
                 className="space-y-4 mb-8 text-gray-800"
                 initial="hidden"
                 animate="visible"
@@ -174,8 +241,8 @@ const ServicesPage: React.FC = () => {
                 }}
               >
                 {['Customized meal planning', 'Fresh, high-quality ingredients', 'Accommodates dietary restrictions and preferences'].map((item, index) => (
-                  <motion.li 
-                    key={index} 
+                  <motion.li
+                    key={index}
                     className="flex items-center text-lg"
                     variants={{
                       hidden: { opacity: 0, x: 20 },
@@ -193,66 +260,11 @@ const ServicesPage: React.FC = () => {
           </div>
         </section>
 
-        {/* How It Works */}
-        <section className="how-it-works-section py-10 mb-24 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.h2 
-              className="text-4xl font-bold text-center  text-gray-900"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 2, scale: 1.1 }}
-              
-              transition={{ duration: 0.8 }}
-            >
-              How It Works
-            </motion.h2>
-            <div className="grid md:grid-cols-4 gap-12">
-              {[
-                { step: "Download the App", icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                ), description: "Get our app from your preferred app store" },
-                { step: "Browse Services", icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                ), description: "Explore our wide range of premium services" },
-                { step: "Schedule", icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                ), description: "Pick a time that works best for you" },
-                { step: "Enjoy", icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ), description: "Sit back and enjoy our top-notch service" }
-              ].map((item, index) => (
-                <div 
-                  key={index} 
-                  className="how-it-works-item flex flex-col items-center text-center"
-                >
-                  <div 
-                    className="bg-white rounded-full p-6 shadow-md mb-6"
-                  >
-                    {item.icon}
-                  </div>
-                  <div className="text-center mb-6">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-1">Step {index + 1}</h3>
-                    <h4 className="text-2xl font-semibold text-gray-800 mb-1">{item.step}</h4>
-                    <p className="text-gray-600 text-lg">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Why Choose Us */}
-        <section className="bg-gradient-to-br from-gray-300 to-gray-300 text-gray-800 p-16 rounded-3xl shadow-2xl mb-32 relative overflow-hidden">
+        <section className="why-choose-us-section bg-gradient-to-br from-gray-200 to-gray-300 text-gray-800 p-16 rounded-3xl shadow-2xl mb-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-pattern opacity-10"></div>
           <div className="relative z-10">
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold mb-12 text-center"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -290,20 +302,17 @@ const ServicesPage: React.FC = () => {
                   ),
                 },
               ].map((item, index) => (
-                <motion.div 
-                  key={index} 
-                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                <div
+                  key={index}
+                  className="why-choose-us-item bg-gray-100 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex justify-center">{item.icon}</div>
                   <h3 className="text-2xl font-semibold mb-4 text-center">{item.title}</h3>
                   <p className="text-lg leading-relaxed text-gray-600 text-center">{item.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
-            <motion.div 
+            <motion.div
               className="mt-16 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -319,34 +328,79 @@ const ServicesPage: React.FC = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        {/* <motion.section 
-          className="text-center mb-24"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl font-bold mb-8 text-black">Ready to Experience Premium Service?</h2>
-          <p className="text-2xl mb-12 text-gray-700">Download our app now and unlock a world of convenience!</p>
-          <div className="flex justify-center space-x-6">
-            <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
-              <Image src="/apple_badge.png" alt="Download on App Store" width={200} height={60} className="rounded-lg shadow-md" />
-            </Link>
-            <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
-              <Image src="/google_badge.png" alt="Get it on Google Play" width={200} height={60} className="rounded-lg shadow-md" />
-            </Link>
+        {/* New Section: Service Impact */}
+        <section className="impact-section py-16 pt-20 pb-20">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              className="text-4xl font-bold mb-12 text-center text-gray-900"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Impact on Your Life
+            </motion.h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              {[
+                {
+                  title: 'Time Saved',
+                  value: '1,000,000+',
+                  description: 'Hours given back to our clients',
+                  icon: (
+                    <svg className="w-12 h-12 mb-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: 'Stress Reduced',
+                  value: '95%',
+                  description: 'Of clients report lower stress levels',
+                  icon: (
+                    <svg className="w-12 h-12 mb-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: 'Quality of Life',
+                  value: '4.9/5',
+                  description: 'Average improvement in life satisfaction',
+                  icon: (
+                    <svg className="w-12 h-12 mb-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  ),
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="impact-item bg-gray-100 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex justify-center">{item.icon}</div>
+                  <h3 className="text-2xl font-semibold mb-4 text-center text-gray-900">{item.title}</h3>
+                  <p className="text-4xl font-bold mb-4 text-center text-blue-600">{item.value}</p>
+                  <p className="text-lg leading-relaxed text-gray-600 text-center">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <motion.div
+              className="mt-16 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <p className="text-2xl font-light leading-relaxed text-gray-700 mb-8">
+                Our services don't just solve problems; they transform lives. Experience the Servizo difference today.
+              </p>
+            </motion.div>
           </div>
-        </motion.section> */}
-        
-       
+        </section>
 
       </main>
-       {/* DOWNLOAD SECTION */}
+      {/* DOWNLOAD SECTION */}
 
-       <div id="download" className="bg-gray-100"
-      // style={{ backgroundColor: "#B7B7B7" }}
-      >
-        <div className="container mx-auto  flex flex-col lg:flex-row items-center">
+      <div id="download" className="download-section bg-gray-100">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-8 lg:mb-0">
             <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg" />
           </div>
@@ -364,8 +418,6 @@ const ServicesPage: React.FC = () => {
           </div>
         </div>
       </div>
-      
-
 
       <Footer />
     </div>

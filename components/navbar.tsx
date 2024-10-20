@@ -23,9 +23,9 @@ const Navbar: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <nav className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <nav className="container mx-auto px-4  sm:px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <motion.svg
+          {/* <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -40,8 +40,8 @@ const Navbar: React.FC = () => {
           >
             <rect width="7" height="7" x="14" y="3" rx="1"></rect>
             <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"></path>
-          </motion.svg>
-          <h2 className='gap-2 font-bold text-xl'>QuickHands</h2>
+          </motion.svg> */}
+          <h2 className='gap-2 font-bold pl-10 text-3xl'>Servizo.</h2>
         </Link>
         <div className="hidden md:flex items-center space-x-12">
           <NavLinks />
@@ -97,7 +97,7 @@ const NavLinks: React.FC = () => (
 
 const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <motion.div whileHover={{ scale: 1.1 }}>
-    <Link href={href} className="block md:inline-block text-gray-800 hover:text-brand-primary transition-colors duration-200 font-medium">
+    <Link href={href} className="block md:inline-block text-md text-black hover:text-black transition-colors duration-200 font-medium">
       {children}
     </Link>
   </motion.div>

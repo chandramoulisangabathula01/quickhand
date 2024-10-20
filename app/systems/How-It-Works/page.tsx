@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import { useEffect, useRef, useState } from "react";
-import { motion} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -18,6 +18,10 @@ const HowItWorksPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isFixed, setIsFixed] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDownloadVisible, setIsDownloadVisible] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
   
   const steps = [
     {
@@ -68,7 +72,7 @@ const HowItWorksPage = () => {
             pin: ".image-container",
             onEnter: () => setCurrentStep(index),
             onLeaveBack: () => setCurrentStep(index),
-            markers: true,
+            // markers: true,
           },
         });
       });
@@ -76,8 +80,14 @@ const HowItWorksPage = () => {
       ScrollTrigger.create({
         trigger: "#download",
         start: "top 90%",
-        onEnter: () => setIsFixed(false),
-        onLeaveBack: () => setIsFixed(true),
+        onEnter: () => {
+          setIsFixed(false);
+          setIsDownloadVisible(true);
+        },
+        onLeaveBack: () => {
+          setIsFixed(true);
+          setIsDownloadVisible(false);
+        },
       });
     } else {
       steps.forEach((_step, index) => {
@@ -89,12 +99,18 @@ const HowItWorksPage = () => {
             start: "",
             end: "",
             scrub: true,
-            markers: true,
+            // markers: true,
             pin: ".image-container",
-            // onEnter: () => setCurrentStep(index),
             onLeaveBack: () => setCurrentStep(index),
           }
         });
+      });
+
+      ScrollTrigger.create({
+        trigger: "#download",
+        start: "top 90%",
+        onEnter: () => setIsDownloadVisible(true),
+        onLeaveBack: () => setIsDownloadVisible(false),
       });
     }
 
@@ -109,9 +125,9 @@ const HowItWorksPage = () => {
       <div className="fixed-section">
         <motion.div
           className={`${isFixed ? 'fixed' : 'absolute'}   flex flex-col items-center lg:w-1/2 transform  ml-16`}
-          initial={{ opacity: 0, x: -50 }} // Start from left with opacity 0
-          animate={{ opacity: isFixed ? 1 : 0, x: 0 }} // Animate to full opacity and original position
-          exit={{ opacity: 0, x: 50 }} // Exit animation
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: isFixed ? 1 : 0, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
           transition={{ duration: 1 }}
         >
           <Image
@@ -125,9 +141,9 @@ const HowItWorksPage = () => {
 
         <motion.div
           className={`${isFixed ? 'fixed' : 'absolute'} lg:block flex flex-col items-center lg:w-1/2 top-1/2 right-0 transform -translate-y-1/2`}
-          initial={{ opacity: 0, x: 50 }} // Start from left with opacity 0
-          animate={{ opacity: isFixed ? 1 : 0, x: 0 }} // Animate to full opacity and original position
-          exit={{ opacity: 0, x: -50 }} // Exit animation
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: isFixed ? 1 : 0, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-3xl font-semibold mb-6">{steps[currentStep].title}</h3>
@@ -181,9 +197,16 @@ const HowItWorksPage = () => {
     <div className="how-it-works-page" ref={containerRef}>
       <Navbar />
 
-      <h1 className="text-4xl font-semibold fixed top-20 left-0 right-0 mb-10 mt-4 text-center text-black z-10">How it works</h1>
+      <motion.h1 
+        className={`text-4xl font-semibold ${isMobile ? '' : 'fixed'} top-20 left-0 right-0 mb-10 mt-4 text-center text-black z-10`}
+        style={isMobile ? { opacity } : {}}
+        animate={{ opacity: isDownloadVisible ? 0 : 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        How it works
+      </motion.h1>
       
-      <div className="mt-20"> {/* Added margin-top for spacing */}
+      <div className="mt-20">
         {isMobile ? <MobileView /> : <DesktopView />}
       </div>
 
