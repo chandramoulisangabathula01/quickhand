@@ -23,37 +23,21 @@ const Navbar: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <nav className="container mx-auto px-4  sm:px-6 py-4 flex justify-between items-center">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          {/* <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-auto h-[40px]"
-            whileHover={{ scale: 1.2 }}
-          >
-            <rect width="7" height="7" x="14" y="3" rx="1"></rect>
-            <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"></path>
-          </motion.svg> */}
-          <h2 className='gap-2 font-bold pl-10 text-3xl'>Servizo.</h2>
+          <h2 className='gap-2 font-bold text-2xl sm:text-3xl lg:text-4xl'>Servizo.</h2>
         </Link>
-        <div className="hidden md:flex items-center space-x-12">
+        <div className="hidden lg:flex items-center space-x-6 xl:space-x-12">
           <NavLinks />
-          <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-3 px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+          <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-2 px-4 lg:py-3 lg:px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
             <span className="flex flex-col items-start leading-none">
-              <p className="text-lg sm:text-xl font-bold">Download App</p>
+              <p className="text-base lg:text-lg xl:text-xl font-bold">Download App</p>
             </span>
           </Link>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-gray-500 hover:text-gray-700 focus:outline-none"
+          className="lg:hidden text-gray-500 hover:text-gray-700 focus:outline-none"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {isOpen ? (
@@ -70,12 +54,12 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white"
+            className="lg:hidden bg-white"
           >
             <div className="px-4 pt-2 pb-3 space-y-1">
               <NavLinks />
             </div>
-            <div className="px-4 py-3">
+            <div className="px-4 py-3 flex justify-center space-x-4">
               <AppStoreBadges />
             </div>
           </motion.div>
@@ -87,7 +71,7 @@ const Navbar: React.FC = () => {
 
 const NavLinks: React.FC = () => (
   <>
-    <NavLink href="/">Home</NavLink>
+    <NavLink href="/" >Home</NavLink>
     <NavLink href="/systems/services">Services</NavLink>
     <NavLink href="/systems/How-It-Works">How It Works</NavLink>
     <NavLink href="/systems/about-us">About Us</NavLink>
@@ -97,7 +81,7 @@ const NavLinks: React.FC = () => (
 
 const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <motion.div whileHover={{ scale: 1.1 }}>
-    <Link href={href} className="block md:inline-block text-md text-black hover:text-black transition-colors duration-200 font-medium">
+    <Link href={href} className="block lg:inline-block text-sm items-center justify-center lg:text-base xl:text-lg text-black hover:text-black transition-colors duration-200 font-medium">
       {children}
     </Link>
   </motion.div>
@@ -105,13 +89,13 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 
 const AppStoreBadges: React.FC = () => (
   <>
-    <Link href="https://apps.apple.com/your-app" className="flex-shrink-0">
+    {/* <Link href="https://apps.apple.com/your-app" className="flex-shrink-0">
       <motion.img
         src="/apple_badge.png"
         alt="Download on App Store"
         width={120}
         height={40}
-        className="h-10 w-auto"
+        className="h-8 sm:h-10 w-auto"
         whileHover={{ scale: 1.1 }}
       />
     </Link>
@@ -121,10 +105,15 @@ const AppStoreBadges: React.FC = () => (
         alt="Get it on Google Play"
         width={135}
         height={40}
-        className="h-10 w-auto"
+        className="h-8 sm:h-10 w-auto"
         whileHover={{ scale: 1.1 }}
       />
-    </Link>
+    </Link> */}
+    <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md py-2 px-4 lg:py-3 lg:px-6 bg-black text-white hover:text-black hover:bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+            <span className="flex flex-col items-start leading-none">
+              <p className="text-base lg:text-lg xl:text-xl font-bold">Download App</p>
+            </span>
+          </Link>
   </>
 );
 

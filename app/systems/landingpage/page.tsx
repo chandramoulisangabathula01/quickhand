@@ -10,7 +10,6 @@ import { LayoutGrid } from "@/components/ui/layout-grid";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Hero from '@/components/hero';
-// import HeroSection from '@/components/hero';
 
 const LandingPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +33,7 @@ const LandingPage: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 3);
-    }, 3000); // Change image every 5 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -63,21 +62,17 @@ const LandingPage: React.FC = () => {
   return (
     <>
     <div className="landing-page bg-white text-gray-800">
-     
-      {/* Key Features Section */}
-
       <Hero />
       <motion.section
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={staggerChildren}
-        className="features  py-20"
-        // style={{ backgroundColor: "#B7B7B7" }}
+        className="features py-12 sm:py-16 md:py-20 lg:py-24"
       >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12">Why Choose Us?</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">Why Choose Us?</motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               { icon: "calendar", alt: "Easy Booking", title: "Easy Booking", description: "Find and book services quickly." },
               { icon: "user-check", alt: "Verified Professionals", title: "Verified Professionals", description: "Trusted, qualified experts at your service." },
@@ -90,7 +85,7 @@ const LandingPage: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   className="mb-4"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto text-brand-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto text-brand-primary">
                     {feature.icon === "calendar" && (
                       <path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8zM3 10h18M8 2v4M16 2v4" />
                     )}
@@ -107,27 +102,21 @@ const LandingPage: React.FC = () => {
                         <circle cx="12" cy="10" r="3" />
                       </>
                     )}
-                    {feature.icon === "dollar-sign" && (
-                      <>
-                        <line x1="12" y1="1" x2="12" y2="23" />
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                      </>
+                    {feature.icon === "star" && (
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     )}
-                     {feature.icon === "star" && (
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        )}
                   </svg>
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-2 text-brand-secondary">{feature.title}</h3>
-                <p>{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-brand-secondary">{feature.title}</h3>
+                <p className="text-sm sm:text-base">{feature.description}</p>
               </motion.div>
             ))}
           </div>
-          <motion.div variants={fadeInUp} className="text-center mt-12">
-            <Link href="/systems/How-It-Works" className="inline-block bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-full hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
+          <motion.div variants={fadeInUp} className="text-center mt-8 sm:mt-12">
+            <Link href="/systems/How-It-Works" className="inline-block bg-black hover:bg-gray-900 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-full hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-md">
               <span className="flex items-center">
                 <span>Learn more about how it works</span>
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </span>
@@ -136,100 +125,68 @@ const LandingPage: React.FC = () => {
         </div>
       </motion.section>
 
-      
-      {/* Our Services Section */}
       <section className="our-services py-12 sm:py-16 md:py-20 bg-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-36">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Our Services</h2>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">Our Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Drivers Card */}
-            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/1.png" alt="Driver Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
-              <div className="p-4 sm:p-6 text-center">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-2">Drivers</h3>
-                <p className="text-gray-600 text-sm sm:text-base">Professional drivers at your service. Whether you need a ride to the airport or a chauffeur for a special event, our skilled drivers ensure a safe and comfortable journey.</p>
+            {[
+              { img: "/1.png", title: "Drivers", description: "Professional drivers at your service. Whether you need a ride to the airport or a chauffeur for a special event, our skilled drivers ensure a safe and comfortable journey." },
+              { img: "/3.png", title: "Chefs", description: "Experienced chefs ready to create culinary delights in your home. From intimate dinners to large gatherings, our chefs bring restaurant-quality meals to your table." },
+              { img: "/2.png", title: "Caretakers", description: "Coming Soon" }
+            ].map((service, index) => (
+              <div key={index} className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
+                <img src={service.img} alt={service.title} className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover mt-6" />
+                <div className="p-4 sm:p-6 text-center">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base">{service.description}</p>
+                </div>
               </div>
-            </div>
-
-            {/* Chefs Card */}
-            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/3.png" alt="Chef Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
-              <div className="p-4 sm:p-6 text-center">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-2">Chefs</h3>
-              <p className="text-gray-600 text-sm sm:text-base">Experienced chefs ready to create culinary delights in your home. From intimate dinners to large gatherings, our chefs bring restaurant-quality meals to your table.</p>
-              </div>
-            </div>
-
-            {/* Caretakers Card */}
-            <div className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col items-center">
-              <img src="/2.png" alt="Caretaker Service" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover mt-6" />
-              <div className="p-4 sm:p-6 text-center">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-2">Caretakers</h3>
-                <p className="text-gray-600 text-sm sm:text-base">Coming Soon</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-      {/* App Demo Section */}
+
       <motion.section
         initial="hidden"
         animate={controls}
         variants={staggerChildren}
-        className="app-demo mt-20"
+        className="app-demo py-12 sm:py-16 md:py-20"
       >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-center mb-12 text-brand-primary">See How It Works!</motion.h2>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 text-brand-primary">See How It Works!</motion.h2>
           <motion.div variants={fadeInUp} className="max-w-3xl mx-auto">
             <div className="aspect-w-16 aspect-h-9 mb-8">
-              <video controls
-                
-                // src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1&playlist=dQw4w9WgXcQ" 
-                src="/videos/app_demo.mp4" 
-                title="App Demo Video"
-                autoPlay
-                loop
-                muted
-
-                // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                // allowFullScreen
-                className="rounded-lg shadow-md h-100% w-100% justify-center items-center"
-              />
-            </div>
-            <div className="text-center space-x-4 mt-8">
-             
+              <video controls src="/videos/app_demo.mp4" title="App Demo Video" autoPlay loop muted className="rounded-lg shadow-md w-full h-full object-cover" />
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Testimonials Section */}
       <motion.section
         initial="hidden"
         animate={controls}
         variants={staggerChildren}
-        className="testimonials py-20 px-12"
-        // style={{ backgroundColor: "#B7B7B7" }}
+        className="testimonials py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8"
       >
-        <div className="container mx-auto px-4">
-          <motion.h2 variants={fadeInUp} className="text-4xl font-bold text-center mb-16 text-black">Voices of Excellence</motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="container mx-auto">
+          <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 text-black">Voices of Excellence</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { quote: "Transformed my approach to home services. Expert assistance at my fingertips!", name: "Sarah Johnson", role: "Homeowner", image: "/customer1.png" },
               { quote: "The real-time tracking feature is revolutionary. It's elevated our entire business model.", name: "Michael Chen", role: "Startup Founder", image: "/customer2.png" },
               { quote: "Unparalleled quality of professionals. Every service has been nothing short of outstanding.", name: "Olivia Rodriguez", role: "Property Manager", image: "/customer3.png" }
             ].map((testimonial, index) => (
-              <motion.div key={index} variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200">
-                <div className="flex items-center mb-6">
-                  <Image src={testimonial.image} alt={testimonial.name} width={64} height={64} className="rounded-full mr-4 border-2 border-brand-primary" />
+              <motion.div key={index} variants={fadeInUp} className="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200">
+                <div className="flex items-center mb-4 sm:mb-6">
+                  <Image src={testimonial.image} alt={testimonial.name} width={48} height={48} className="rounded-full mr-4 border-2 border-brand-primary" />
                   <div>
-                    <p className="font-semibold text-lg text-brand-primary">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="font-semibold text-base sm:text-lg text-brand-primary">{testimonial.name}</p>
+                    <p className="text-xs sm:text-sm text-gray-600">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
+                <p className="text-gray-700 italic mb-4 text-sm sm:text-base">"{testimonial.quote}"</p>
                 <div className="flex justify-end">
-                  <svg className="w-6 h-6 text-brand-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-brand-primary" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 </div>
@@ -239,41 +196,33 @@ const LandingPage: React.FC = () => {
         </div>
       </motion.section>
 
-
-{/* DOWNLOAD SECTION */}
-
-      <div id="download" className="bg-gray-100"
-      // style={{ backgroundColor: "#B7B7B7" }}
-      >
+      <div id="download" className="bg-gray-100 ">
         <div className="container mx-auto  flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg" />
+            <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg mx-auto lg:mx-0" />
           </div>
-          <div className="lg:w-1/2 right-0 lg:pl-12">
-            <h2 className="text-4xl font-bold mb-8 text-black">Ready to Experience Premium Service?</h2>
-            <p className="text-2xl mb-8 text-gray-700">Download our app now and unlock a world of convenience!</p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="lg:w-1/2 lg:pl-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-black text-center lg:text-left">Ready to Experience Premium Service?</h2>
+            <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-700 text-center lg:text-left">Download our app now and unlock a world of convenience!</p>
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
               <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/apple_badge.png" alt="Download on App Store" width={200} height={60} className="rounded-lg shadow-md" />
+                <Image src="/apple_badge.png" alt="Download on App Store" width={180} height={54} className="rounded-lg shadow-md" />
               </Link>
               <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/google_badge.png" alt="Get it on Google Play" width={200} height={60} className="rounded-lg shadow-md" />
+                <Image src="/google_badge.png" alt="Get it on Google Play" width={180} height={54} className="rounded-lg shadow-md" />
               </Link>
             </div>
           </div>
         </div>
       </div>
-      </div>
-      
-        <Footer />
-      
-      </>
+    </div>
+    
+    <Footer />
+    </>
   );
 };
 
 export default LandingPage;
-
-
 
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
@@ -19,9 +20,21 @@ const HowItWorksPage = () => {
   const [isFixed, setIsFixed] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [isDownloadVisible, setIsDownloadVisible] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  
+  useEffect(() => {
+    const unsubscribe = scrollY.onChange(latest => {
+      if (latest > 100) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [scrollY]);
   
   const steps = [
     {
@@ -66,12 +79,11 @@ const HowItWorksPage = () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: triggerElement,
-            start: "top 10%",
-            end: "bottom bottom",
+            start: "top center",
+            end: "bottom center",
             scrub: true,
-            pin: ".image-container",
             onEnter: () => setCurrentStep(index),
-            onLeaveBack: () => setCurrentStep(index),
+            onEnterBack: () => setCurrentStep(index),
             // markers: true,
           },
         });
@@ -96,12 +108,12 @@ const HowItWorksPage = () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: triggerElement,
-            start: "",
-            end: "",
+            start: "top center",
+            end: "bottom center",
             scrub: true,
             // markers: true,
-            pin: ".image-container",
-            onLeaveBack: () => setCurrentStep(index),
+            onEnter: () => setCurrentStep(index),
+            onEnterBack: () => setCurrentStep(index),
           }
         });
       });
@@ -121,42 +133,42 @@ const HowItWorksPage = () => {
   }, [isMobile, steps]);
 
   const DesktopView = () => (
-    <>
-      <div className="fixed-section">
-        <motion.div
-          className={`${isFixed ? 'fixed' : 'absolute'}   flex flex-col items-center lg:w-1/2 transform  ml-16`}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: isFixed ? 1 : 0, x: 0 }}
-          exit={{ opacity: 0, x: 50 }}
-          transition={{ duration: 1 }}
-        >
-          <Image
-            src={steps[currentStep].image}
-            alt={steps[currentStep].title}
-            width={300}
-            height={300}
-            className="rounded-lg"
-          />
-        </motion.div>
+    <div className="relative">
+      <div className="sticky top-10 h-screen flex items-center">
+        <div className="container mx-auto flex">
+          <motion.div
+            className="w-1/2 mx-auto flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src={steps[currentStep].image}
+              alt={steps[currentStep].title}
+              width={300} // Reduced width for a smaller image
+              height={300} // Reduced height for a smaller image
+              className="rounded-lg"
+            />
+          </motion.div>
 
-        <motion.div
-          className={`${isFixed ? 'fixed' : 'absolute'} lg:block flex flex-col items-center lg:w-1/2 top-1/2 right-0 transform -translate-y-1/2`}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: isFixed ? 1 : 0, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-3xl font-semibold mb-6">{steps[currentStep].title}</h3>
-          <p className="text-xl">{steps[currentStep].description}</p>
-        </motion.div>
+          <motion.div
+            className="w-1/2 flex flex-col justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="text-3xl font-semibold mb-6">{steps[currentStep].title}</h3>
+            <p className="text-xl">{steps[currentStep].description}</p>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="scroll-sections">
+      <div className="relative z-10">
         {steps.map((_step, index) => (
           <div className={`step-${index} h-screen`} key={index}></div>
         ))}
       </div>
-    </>
+    </div>
   );
 
   const MobileView = () => {
@@ -198,15 +210,15 @@ const HowItWorksPage = () => {
       <Navbar />
 
       <motion.h1 
-        className={`text-4xl font-semibold ${isMobile ? '' : 'fixed'} top-20 left-0 right-0 mb-10 mt-4 text-center text-black z-10`}
-        style={isMobile ? { opacity } : {}}
-        animate={{ opacity: isDownloadVisible ? 0 : 1 }}
+        className={`text-4xl font-semibold ${isMobile ? '' : 'fixed'} top-20 left-0 right-0 mt-4 text-center text-black z-10`}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isHeaderVisible ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       >
         How it works
       </motion.h1>
       
-      <div className="mt-20">
+      <div className="">
         {isMobile ? <MobileView /> : <DesktopView />}
       </div>
 
