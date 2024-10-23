@@ -52,11 +52,21 @@ const CookieConsent = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 w-full bg-gray-800 text-white p-4 flex justify-between items-center z-50">
-      <p>We use cookies for tracking purposes. Do you accept?</p>
-      <div>
-        <button onClick={handleAccept} className="mr-2 bg-green-500 p-2 rounded">Accept</button>
-        <button onClick={handleDecline} className="bg-red-500 p-2 rounded">Decline</button>
+    <div className="fixed bottom-20 w-full bg-white border-t border-gray-200 shadow-lg p-6 flex flex-col sm:flex-row justify-between items-center gap-4 z-50">
+      <p className="text-gray-600 text-sm sm:text-base">We use cookies to enhance your browsing experience and analyze site traffic. Would you like to accept cookies?</p>
+      <div className="flex gap-3">
+        <button 
+          onClick={handleAccept} 
+          className="px-6 py-2 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-colors"
+        >
+          Accept
+        </button>
+        <button 
+          onClick={handleDecline}
+          className="px-6 py-2 text-sm font-medium text-gray-900 border border-gray-900 rounded-full hover:bg-gray-100 transition-colors" 
+        >
+          Decline
+        </button>
       </div>
     </div>
   );

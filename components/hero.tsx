@@ -29,21 +29,11 @@ function Hero() {
                 </span>
               </Link>
             </div>
-          
-            {/* <div className="mt-12 flex justify-center items-center w-full">
-              <Link href="/demo" className="inline-flex items-center px-8 sm:px-16 lg:px-44 py-3 border border-transparent text-sm sm:text-base font-medium rounded-full shadow-sm text-white bg-black hover:bg-gray-300 transition-all duration-300 transform hover:scale-105">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Watch our demo video
-              </Link>
-            </div> */}
           </div>
-          <div className="lg:w-1/2 hidden lg:block">
+          <div className="lg:w-1/2 hidden lg:block ">
             <LayoutGridDemo />
           </div>
-          <div className="w-full sm:w-1/2 lg:hidden">
+          <div className="w-full  lg:hidden ">
             <video className="w-full h-auto" autoPlay loop muted playsInline>
               <source src="/videos/ProChefClip.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -59,7 +49,7 @@ export default Hero;
 
 function LayoutGridDemo() {
   return (
-    <div className="h-[50vh] sm:h-[60vh] lg:h-[80vh] mt-6 w-full lg:w-[90vh]">
+    <div className="xmd:h-[100%] xmd:w-full  h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[70vh] mt-[2vh] w-[90%] sm:w-[85%] md:w-[80%] lg:w-[90%] mx-auto">
       <LayoutGrid cards={cards} />
     </div>
   );

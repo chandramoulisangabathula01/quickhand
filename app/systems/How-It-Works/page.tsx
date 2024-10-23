@@ -138,8 +138,8 @@ const HowItWorksPage = () => {
         <div className="container mx-auto flex">
           <motion.div
             className="w-1/2 mx-auto flex justify-center"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Image
@@ -153,8 +153,8 @@ const HowItWorksPage = () => {
 
           <motion.div
             className="w-1/2 flex flex-col justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-3xl font-semibold mb-6">{steps[currentStep].title}</h3>
@@ -206,7 +206,7 @@ const HowItWorksPage = () => {
   };
 
   return (
-    <div className="how-it-works-page" ref={containerRef}>
+    <div className="how-it-works-page " ref={containerRef}>
       <Navbar />
 
       <motion.h1 
@@ -224,18 +224,18 @@ const HowItWorksPage = () => {
 
       <div id="download" className="bg-gray-100">
         <div className="container mx-auto flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
+          <div className="lg:w-1/2  mb-8 lg:mb-0">
             <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg" />
           </div>
           <div className="lg:w-1/2 right-0 lg:pl-12">
             <h2 className="text-4xl font-bold mb-8 text-black">Ready to Experience Premium Service?</h2>
             <p className="text-2xl mb-8 text-gray-700">Download our app now and unlock a world of convenience!</p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+            <div className="flex flex-row space-x-4 sm:space-x-6 justify-center">
               <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/apple_badge.png" alt="Download on App Store" width={200} height={60} className="rounded-lg shadow-md" />
+                <Image src="/apple_badge.png" alt="Download on App Store" width={150} height={45} className="rounded-lg shadow-md" />
               </Link>
               <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/google_badge.png" alt="Get it on Google Play" width={200} height={60} className="rounded-lg shadow-md" />
+                <Image src="/google_badge.png" alt="Get it on Google Play" width={150} height={45} className="rounded-lg shadow-md" />
               </Link>
             </div>
           </div>

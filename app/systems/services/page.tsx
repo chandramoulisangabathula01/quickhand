@@ -20,7 +20,7 @@ const ServicesPage: React.FC = () => {
       { className: '.how-it-works-item', start: 'top 70%', end: 'bottom 20%' },
       { className: '.why-choose-us-item', start: 'top 70%', end: 'bottom 20%' },
       { className: '.impact-item', start: 'top 70%', end: 'bottom 20%' },
-      { className: '.download-section', start: 'top 80%', end: 'bottom 20%' },
+      { className: '.download-section', start: 'top 80%', end: 'bottom 20%' ,},
     ];
 
     sections.forEach(({ className, start, end }) => {
@@ -36,6 +36,7 @@ const ServicesPage: React.FC = () => {
             trigger: className,
             start: start,
             end: end,
+            // markers:true,
             toggleActions: 'play none none reverse',
           },
         }
@@ -60,12 +61,12 @@ const ServicesPage: React.FC = () => {
   }, []); // Added empty dependency array to useEffect
 
   return (
-    <div className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900 scroll-smooth overflow-hidden" ref={mainRef}>
+    <div className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900 scroll-smooth " ref={mainRef}>
       <Navbar />
 
-      <main className="container mx-auto lg:py-24 py-10 px-4 sm:px-6 lg:px-8">
+      <main className="container mx-auto  py-10 px-4 sm:px-6 lg:px-8">
         <motion.h1
-          className="text-4xl font-bold text-center text-black"
+          className="text-4xl pt-8 font-bold text-center text-black"
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: -50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -76,7 +77,7 @@ const ServicesPage: React.FC = () => {
         {/* Driver Services */}
         <section className="service-section mb-36 ">
           <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
-            <div className="lg:w-1/2 mb-12 lg:ml-12 lg:mb-0 ">
+            <div className="lg:w-1/2 mb-12 lg:ml-12 lg:pr-12 lg:mb-0 ">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -198,7 +199,7 @@ const ServicesPage: React.FC = () => {
             >
               Why Choose Our Services?
             </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-8 md:gap-12">
               {[
                 {
                   title: 'Unparalleled Expertise',
@@ -255,8 +256,8 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* New Section: Service Impact */}
-        <section className="impact-section py-16 pt-20 pb-20">
-          <div className="container mx-auto px-4">
+        <section className="impact-section min-w-fit py-16 pt-20 pb-20">
+          <div className="container px-4">
             <motion.h2
               className="text-4xl font-bold mb-12 text-center text-gray-900"
               initial={{ opacity: 0, y: -20 }}
@@ -266,7 +267,7 @@ const ServicesPage: React.FC = () => {
             >
               Our Impact on Your Life
             </motion.h2>
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-12">
               {[
                 {
                   title: 'Time Saved',
