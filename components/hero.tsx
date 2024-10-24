@@ -59,12 +59,11 @@ const SkeletonOne = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        House in the woods
+        chef at your service
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
+        Our chefs are professional, reliable, and always ready to assist you with a smile.
       </p>
     </div>
   );
@@ -74,13 +73,11 @@ const SkeletonTwo = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        House above the clouds
+        soon with better services
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-        Perched high above the world, this house offers breathtaking views and a
-        unique living experience. It's a place where the sky meets home,
-        and tranquility is a way of life.
+       caregiver services are coming soon with more quality services
       </p>
     </div>
   );
@@ -90,12 +87,11 @@ const SkeletonThree = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        Greens all over
+       all quality services at one App
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-        A house surrounded by greenery and nature's beauty. It's the
-        perfect place to relax, unwind, and enjoy life.
+        Our services are designed to meet all your needs the perfect place to relax, unwind, and enjoy life.
       </p>
     </div>
   );
@@ -105,12 +101,11 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        Rivers are serene
+        driver at your service
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-        A house by the river is a place of peace and tranquility. It's the
-        perfect place to relax, unwind, and enjoy life.
+        Our drivers are professional, reliable, and always ready to assist you with a smile.
       </p>
     </div>
   );
@@ -128,8 +123,8 @@ const cards = [
     id: 2,
     content: <SkeletonTwo />,
     className: "col-span-1",
-    video: "/videos/ProDriverClip.mp4",
-    thumbnail: "",
+    video: "",
+    thumbnail: "/images/landingpage/heroPage/soon.webp",
   },
   {
     id: 3,
