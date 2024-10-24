@@ -114,23 +114,11 @@ const ContactPage = () => {
                 </a>
               </div>
             </div>
-            <div className=" flex justify-center items-center l ">
+            <div className=" flex justify-center items-center  ">
                 
               
                   {/* <img src="/images/caregiver.png" alt="Map" className="object-contain top-20 h-[500px] w-full" /> */}
-              <svg
-                width="500"
-                height="500"
-                viewBox="0 0 500 500"
-                className="object-contain border-2 border-gray-800 rounded-3xl"
-              >
-                <image
-                  href="/images/contact/contactimage2.svg"
-                  width="500" 
-                  height="500"
-                  preserveAspectRatio="xMidYMid meet"
-                />
-              </svg>
+              <img src="/images/contact/contactimagewebp.webp" alt="Caregiver" className="object-contain top-20 h-[500px] w-full" />
                 
               
             </div>
