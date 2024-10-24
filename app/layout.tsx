@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 // import LoadingLayout from "@/app/LoadingLayout"; // Adjust the path according to your structure
 import "./globals.css";
+import LoadingLayout from "./LoadingLayout";
 // import LoadingLayout from "./LoadingLayout";
 
 const geistSans = localFont({
@@ -28,8 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <LoadingLayout>{children}</LoadingLayout> */}
-        {children}
+        <LoadingLayout>{children}</LoadingLayout>
+        
       </body>
     </html>
   );
