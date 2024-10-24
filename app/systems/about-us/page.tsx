@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+// import Image from 'next/image';
+// import Link from 'next/link';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { motion } from 'framer-motion';
@@ -166,26 +166,8 @@ const AboutUsPage: React.FC = () => {
          
         
       </main>
-      <div ref={(el: HTMLElement | null) => { if (el) sectionRefs.current[2] = el }} id="download" className="bg-gray-100">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg" />
-          </div>
-          <div className="lg:w-1/2 right-0 lg:pl-12">
-            <h2 className="text-4xl font-bold mb-8 text-black">Ready to Experience Premium Service?</h2>
-            <p className="text-2xl mb-8 text-gray-700">Download our app now and unlock a world of convenience!</p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/apple_badge.png" alt="Download on App Store" width={200} height={60} className="rounded-lg shadow-md" />
-              </Link>
-              <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/google_badge.png" alt="Get it on Google Play" width={200} height={60} className="rounded-lg shadow-md" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
+     
+<div id='download'>.</div>
       <Footer />
     </div>
   );

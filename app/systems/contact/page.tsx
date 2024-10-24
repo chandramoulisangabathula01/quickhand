@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+// import Link from "next/link";
 
 const ContactPage = () => {
   const [formData] = useState({
@@ -113,15 +114,31 @@ const ContactPage = () => {
                 </a>
               </div>
             </div>
-            <div className=" flex justify-center items-center  ">
+            <div className=" flex justify-center items-center l ">
                 
               
-                  <img src="/images/mobile/servizoLogomobile.png" alt="Map" className="object-contain top-20 h-[400px] w-full" />
+                  {/* <img src="/images/caregiver.png" alt="Map" className="object-contain top-20 h-[500px] w-full" /> */}
+              <svg
+                width="500"
+                height="500"
+                viewBox="0 0 500 500"
+                className="object-contain border-2 border-gray-800 rounded-3xl"
+              >
+                <image
+                  href="/images/contact/contactimage2.svg"
+                  width="500" 
+                  height="500"
+                  preserveAspectRatio="xMidYMid meet"
+                />
+              </svg>
                 
               
             </div>
           </div>
         </div>
+        <div id='download'>.</div>
+
+        
         <Footer />
      
     </>

@@ -10,6 +10,7 @@ import { LayoutGrid } from "@/components/ui/layout-grid";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Hero from '@/components/hero';
+import DownloadSection from '@/components/downloadSection';
 
 const LandingPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -196,26 +197,9 @@ const LandingPage: React.FC = () => {
         </div>
       </motion.section>
 
-      <div id="download" className="bg-gray-100 ">
-        <div className="container mx-auto  flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <Image src="/images/mockupmobile.png" alt="App Preview" width={600} height={500} className="rounded-lg mx-auto lg:mx-0" />
-          </div>
-          <div className="lg:w-1/2 lg:pl-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-black text-center lg:text-left">Ready to Experience Premium Service?</h2>
-            <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-700 text-center lg:text-left">Download our app now and unlock a world of convenience!</p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link href="https://apps.apple.com/your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/apple_badge.png" alt="Download on App Store" width={180} height={54} className="rounded-lg shadow-md" />
-              </Link>
-              <Link href="https://play.google.com/store/apps/details?id=your-app" className="inline-block transition-transform hover:scale-110">
-                <Image src="/google_badge.png" alt="Get it on Google Play" width={180} height={54} className="rounded-lg shadow-md" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
+    <DownloadSection />
     
     <Footer />
     </>

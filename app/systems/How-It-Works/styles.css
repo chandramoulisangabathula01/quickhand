@@ -1,0 +1,13 @@
+.landscape-mode img {
+    max-width: 100%;
+    max-height: 40vh; /* Ensure images fit within the viewport in landscape mode */
+  }
+  
+  .landscape-mode h3 {
+    font-size: 1.5rem; /* Reduce title size for landscape mode */
+  }
+  
+  .landscape-mode p {
+    font-size: 1rem; /* Reduce description size for landscape mode */
+  }
+  
