@@ -20,6 +20,7 @@ const LandingPage: React.FC = () => {
     threshold: 0.1,
   });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedFaq, setSelectedFaq] = useState<number | null>(null);
 
   useEffect(() => {
     if (inView) {
@@ -199,6 +200,124 @@ const LandingPage: React.FC = () => {
 
       
     </div>
+    {/* app features & benefits */}
+    <motion.section 
+      initial="hidden"
+      animate={controls}
+      variants={staggerChildren}
+      className="app-features py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.h2 
+          variants={fadeInUp}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600"
+        >
+          App Benefits
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { 
+              title: "Live Notifications",
+              description: "Get real-time updates on your service status",
+              icon: "🔔"
+            },
+            { 
+              title: "Schedule Management",
+              description: "Easily manage bookings and schedules",
+              icon: "📅"
+            },
+            { 
+              title: "In-App Payments",
+              description: "Convenient and secure payment options",
+              icon: "💳"
+            },
+            { 
+              title: "Service Reviews",
+              description: "Leave reviews and check ratings",
+              icon: "⭐"
+            }
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform border border-gray-100"
+            >
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.section>
+
+    {/* FAQ */}
+    <motion.section 
+      initial="hidden"
+      animate={controls}
+      variants={staggerChildren}
+      className="faq py-16 sm:py-20 md:py-24 bg-white"
+    >
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <motion.h2 
+          variants={fadeInUp}
+          className="text-2xl sm:text-4xl lg:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600"
+        >
+          Frequently Asked Questions
+        </motion.h2>
+        <div className="space-y-6">
+          {[
+            { 
+              question: "How do I book a service?",
+              answer: "Simply use our app or website to book a service with just a few clicks. Browse through available services, select your preferred time slot, and confirm your booking instantly."
+            },
+            { 
+              question: "What if I need to cancel?",
+              answer: "You can easily cancel or reschedule through our app up to 4 hours before the scheduled service time. Our flexible cancellation policy ensures a hassle-free experience."
+            },
+            { 
+              question: "Are all service providers verified?",
+              answer: "Yes, all our professionals undergo a thorough verification process including background checks, skill assessment, and training to ensure the highest quality of service."
+            },
+            { 
+              question: "Can I track my service provider?",
+              answer: "Absolutely! Use our real-time tracking feature to monitor your service provider's location and estimated arrival time, ensuring complete transparency and convenience."
+            }
+          ].map((faq, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="border border-gray-200 rounded-xl overflow-hidden"
+            >
+              <motion.button
+                className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+                onClick={() => setSelectedFaq(selectedFaq === index ? null : index)}
+              >
+                <span className="font-semibold text-lg text-gray-800">{faq.question}</span>
+                <motion.span
+                  animate={{ rotate: selectedFaq === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  ▼
+                </motion.span>
+              </motion.button>
+              <motion.div
+                initial={false}
+                animate={{
+                  height: selectedFaq === index ? "auto" : 0,
+                  opacity: selectedFaq === index ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden bg-gray-50"
+              >
+                <p className="px-6 py-4 text-gray-600">{faq.answer}</p>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.section>
     <DownloadSection />
     
     <Footer />
@@ -207,6 +326,146 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
+
+
+// /* eslint-disable @next/next/no-img-element */
+// /* eslint-disable @typescript-eslint/no-unused-vars */
+// /* eslint-disable react/no-unescaped-entities */
+// "use client";
+// import { useState, useEffect } from 'react';
+// import Link from 'next/link';
+// import Image from 'next/image';
+// import Footer from '@/components/footer';
+// import { LayoutGrid } from "@/components/ui/layout-grid";
+// import { motion, useAnimation } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import Hero from '@/components/hero';
+// import DownloadSection from '@/components/downloadSection';
+
+// const LandingPage: React.FC = () => {
+//   const [isLoaded, setIsLoaded] = useState(false);
+//   const controls = useAnimation();
+//   const [ref, inView] = useInView({
+//     triggerOnce: true,
+//     threshold: 0.1,
+//   });
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+//   useEffect(() => {
+//     if (inView) {
+//       controls.start('visible');
+//     }
+//   }, [controls, inView]);
+
+//   useEffect(() => {
+//     setIsLoaded(true);
+//   }, []);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 3);
+//     }, 3000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const fadeInUp = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+//   };
+
+//   const staggerChildren = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.2,
+//       },
+//     },
+//   };
+
+//   const images = [
+//     { src: "/driverService.png", alt: "Driver Service" },
+//     { src: "/chefteam.png", alt: "Chef Service" },
+//     { src: "/elderCare2.png", alt: "Caretaker Service" }
+//   ];
+
+//   return (
+//     <>
+//       <div className="landing-page bg-white text-gray-800">
+//         <Hero />
+        
+//         <motion.section
+//           ref={ref}
+//           initial="hidden"
+//           animate={controls}
+//           variants={staggerChildren}
+//           className="features py-12 sm:py-16 md:py-20 lg:py-24"
+//         >
+//           {/* "Why Choose Us" Section */}
+//           {/* Existing Content */}
+//         </motion.section>
+
+//         {/* "Our Services" Section */}
+//         {/* Existing Content */}
+
+//         {/* New Sections */}
+        
+//         <section className="app-features py-12 sm:py-16 md:py-20 bg-gray-50">
+//           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+//             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">App Benefits</h2>
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+//               {[
+//                 { title: "Live Notifications", description: "Get real-time updates on your service status." },
+//                 { title: "Schedule Management", description: "Easily manage bookings and schedules." },
+//                 { title: "In-App Payments", description: "Convenient and secure payment options." },
+//                 { title: "Service Reviews", description: "Leave reviews and check ratings." }
+//               ].map((feature, index) => (
+//                 <div key={index} className="text-center bg-white p-6 rounded-xl shadow-md">
+//                   <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+//                   <p>{feature.description}</p>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+//         <section className="service-area py-12 sm:py-16 md:py-20 bg-white">
+//           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+//             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">Where We Operate</h2>
+//             <div className="flex justify-center">
+//               <img src="/map.png" alt="Service Coverage Map" className="rounded-lg shadow-lg w-full max-w-3xl" />
+//             </div>
+//           </div>
+//         </section>
+
+//         <section className="faq py-12 sm:py-16 md:py-20 bg-gray-50">
+//           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+//             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12">Frequently Asked Questions</h2>
+//             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+//               {[
+//                 { question: "How do I book a service?", answer: "Simply use our app or website to book a service with just a few clicks." },
+//                 { question: "What if I need to cancel?", answer: "You can easily cancel or reschedule through our app." },
+//                 { question: "Are all service providers verified?", answer: "Yes, all our professionals go through a thorough verification process." },
+//                 { question: "Can I track my service provider?", answer: "Absolutely, use real-time tracking to stay updated on their arrival." }
+//               ].map((faq, index) => (
+//                 <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+//                   <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
+//                   <p>{faq.answer}</p>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+//         <DownloadSection />
+//         <Footer />
+//       </div>
+//     </>
+//   );
+// };
+
+// export default LandingPage;
 
 
 
