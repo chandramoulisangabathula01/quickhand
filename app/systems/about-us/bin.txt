@@ -1,0 +1,475 @@
+/* eslint-disable react/no-unescaped-entities */
+// /* eslint-disable react/no-unescaped-entities */
+// "use client";
+
+
+// import React, { useEffect, useRef } from 'react';
+// // import Image from 'next/image';
+// // import Link from 'next/link';
+// import Navbar from '@/components/navbar';
+// import Footer from '@/components/footer';
+// import { motion } from 'framer-motion';
+// import { gsap } from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import AboutUsHero from '@/components/aboutusHero';
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const AboutUsPage: React.FC = () => {
+//   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+//   const ourStorysectionRefs = useRef<(HTMLElement | null)[]>([]);
+//   useEffect(() => {
+//     sectionRefs.current.forEach((section) => {
+//       gsap.fromTo(
+//         section,
+//         { opacity: 0, y: 50 },
+//         {
+//           opacity: 1,
+//           y: 0,
+//           duration: 1,
+//           scrollTrigger: {
+//             trigger: section,
+//             start: 'top 80%',
+//             end: 'bottom 20%',
+//             // markers: true,
+//             toggleActions: 'play none none reverse',
+//           },
+//         }
+//       );
+//     });
+//   }, []);
+//   useEffect(() => {
+//     ourStorysectionRefs.current.forEach((section) => {
+//       gsap.fromTo(
+//         section,
+//         { opacity: 0, y: 50 },
+//         {
+//           opacity: 1,
+//           y: 0,
+//           duration: 1,
+//           scrollTrigger: {
+//             trigger: section,
+//             start: 'top 80%',
+//             end: 'bottom 20%',
+//             // markers: true,
+//             toggleActions: 'play none none reverse',
+//           },
+//         }
+//       );
+//     });
+//   }, []);
+
+//   const fadeInUp = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { opacity: 1, y: 0 },
+//   };
+
+//   return (
+//     <div className="about-us-page">
+//       <Navbar />
+//       <AboutUsHero />
+    
+     
+
+//       {/* <section ref={(el) => { if (el) sectionRefs.current[0] = el; }} className="mb-24 rounded-xl  overflow-hidden"
+//       style={{
+//         backgroundImage: "url('/images/about-us-bg.jpg')",
+//         backgroundSize: 'cover',
+//         backgroundPosition: 'center',
+//       }}
+//         >
+//           <div className="flex flex-col md:flex-row items-center justify-center">
+            
+//             <div className="md:w-[60%] p-8 md:p-24 flex flex-col items-center justify-center left-0">
+//               <h2 className="text-3xl font-bold mb-8  text-gray-800">Our Journey of Innovation</h2>
+//               <p className="text-xl mb-8 leading-relaxed text-center text-gray-500">
+//                 Founded in 2020, we set out to redefine convenience in the digital age. Our platform seamlessly connects discerning clients with elite professionals across diverse service domains.                 By harnessing cutting-edge technology and human expertise, we're crafting an unparalleled platform that anticipates and meets the evolving needs of both service seekers and providers.
+
+//               </p>
+//               <p className="text-xl mb-8 leading-relaxed text-gray-700">
+//               </p>
+//               <Link href="/our-vision" className="inline-block bg-brand-primary text-white py-4 px-8 rounded-full hover:bg-brand-secondary transition-colors duration-300 text-lg">
+//                 Discover Our Vision
+//               </Link>
+//             </div>
+//           </div>
+//         </section>       */}
+//       <main className="container mx-auto px-4 py-10">
+//         {/* <motion.h1 
+//           className="text-4xl font-bold text-center mb-20"
+//           initial={{ opacity: 0, y: -50 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//         >
+//          We Simplify Your Work with Our Expert Services        </motion.h1> */}
+//         {/* Company Overview Section */}
+        
+
+//         {/* Values Section */}
+//         <section ref={(el) => { if (el) sectionRefs.current[1] = el; }} className="mb-24">
+//           <h2 className="text-4xl font-semibold text-center mb-16">Our Values</h2>
+//           <div className="grid md:grid-cols-3 gap-12">
+//             {[
+//               { icon: (
+//                 <svg className="w-12 h-12 mb-6 mx-auto  text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+//                 </svg>
+//               ), title: "Quality", description: "We're committed to providing top-notch services through our vetted professionals." },
+//               { icon: (
+//                 <svg className="w-12 h-12 mb-6 mx-auto  text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+//                 </svg>
+//               ), title: "Innovation", description: "We continuously strive to improve our platform and services to meet evolving needs." },
+//               { icon: (
+//                 <svg className="w-12 h-12 mb-6 mx-auto  text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+//                 </svg>
+//               ), title: "Trust", description: "We build lasting relationships with our users and service providers based on trust and reliability." }
+//             ].map((value, index) => (
+//               <motion.div 
+//                 key={index} 
+//                 className="text-center p-8 bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+//                 variants={fadeInUp}
+//                 initial="hidden"
+//                 animate="visible"
+//                 transition={{ delay: index * 0.2 }}
+//               >
+//                 <div className="mb-6">
+//                   {value.icon}
+//                 </div>
+//                 <h3 className="text-2xl font-semibold mb-4">{value.title}</h3>
+//                 <p className="text-lg">{value.description}</p>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </section>
+//         {/* Our Story Section */}
+//         <section ref={(el) => { if (el) ourStorysectionRefs.current[2] = el; }} className="mb-24  flex flex-col items-center justify-center h-fit w-fit bg-gray-100 text-black rounded-xl p-12 shadow-lg mx-auto">
+//           <h2 className="text-4xl font-semibold text-center mb-10 flex items-center justify-center">
+//             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+//             </svg>
+//             Our Story
+//           </h2>
+//           <div className="space-y-8 max-w-3xl mx-auto">
+//             <p className="text-lg leading-relaxed">
+//               Our journey began with a simple yet powerful idea: to bridge the gap between exceptional service professionals and those seeking quality assistance in their daily lives.
+//             </p>
+//             <p className="text-lg leading-relaxed">
+//               Drawing from our diverse backgrounds in technology, hospitality, and customer service, we recognized the untapped potential in the gig economy. We envisioned a platform that not only connects but elevates the entire service experience.
+//             </p>
+//             <p className="text-xl leading-relaxed font-semibold">
+//               Today, we're not just providing a service; we're fostering a community where skills are valued, trust is paramount, and convenience meets excellence.
+//             </p>
+//           </div>
+//         </section>
+
+//         {/* CTA Section */}
+        
+         
+        
+//       </main>
+     
+// <div id='download'>.</div>
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default AboutUsPage;
+"use client"
+
+import Lenis from '@studio-freight/lenis'
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useRef, useEffect } from "react";
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
+import Gallery from '@/components/card';
+
+const AboutUsPage = () => {
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.05,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const ourStorysectionRefs = useRef<(HTMLElement | null)[]>([]);
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <div className="bg-white">
+      <Navbar />
+      <Hero />
+      <Gallery /> 
+      
+      <main className="container mx-auto px-12  py-10">
+        <section ref={(el) => { if (el) sectionRefs.current[1] = el; }} className="mb-24">
+          <h2 className="text-4xl font-semibold text-center mb-16 text-black">Our Values</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              { icon: (
+                <svg className="w-12 h-12 mb-6 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              ), title: "Quality", description: "We're committed to providing top-notch services through our vetted professionals." },
+              { icon: (
+                <svg className="w-12 h-12 mb-6 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              ), title: "Innovation", description: "We continuously strive to improve our platform and services to meet evolving needs." },
+              { icon: (
+                <svg className="w-12 h-12 mb-6 mx-auto text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              ), title: "Trust", description: "We build lasting relationships with our users and service providers based on trust and reliability." }
+            ].map((value, index) => (
+              <motion.div 
+                key={index} 
+                className="text-center p-8 bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="mb-6">
+                  {value.icon}
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-black">{value.title}</h3>
+                <p className="text-lg text-gray-600">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section ref={(el) => { if (el) ourStorysectionRefs.current[2] = el; }} className="mb-24 flex flex-col items-center justify-center h-fit w-fit bg-gray-100 text-black rounded-xl p-12 shadow-lg mx-auto">
+          <h2 className="text-4xl font-semibold text-center mb-10 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Our Story
+          </h2>
+          <div className="space-y-8 max-w-3xl mx-auto">
+            <p className="text-lg leading-relaxed text-gray-600">
+              Our journey began with a simple yet powerful idea: to bridge the gap between exceptional service professionals and those seeking quality assistance in their daily lives.
+            </p>
+            <p className="text-lg leading-relaxed text-gray-600">
+              Drawing from our diverse backgrounds in technology, hospitality, and customer service, we recognized the untapped potential in the gig economy. We envisioned a platform that not only connects but elevates the entire service experience.
+            </p>
+            <p className="text-xl leading-relaxed font-semibold text-black">
+              Today, we're not just providing a service; we're fostering a community where skills are valued, trust is paramount, and convenience meets excellence.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <div id='download'>.</div>
+      <Footer />
+    </div>
+  );
+};
+
+const SECTION_HEIGHT = 1500;
+
+const Hero = () => {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+
+  return (
+    <div
+      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
+      className="relative w-full"
+    >
+      <h1 className="absolute top-16 left-1/2 transform -translate-x-1/2 text-black  text-5xl font-bold z-10">
+        Trust & Love   
+      </h1>
+      
+      <CenterImage />
+      
+      <motion.div 
+        className="fixed top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center"
+        initial={{ opacity: 1 }}
+        style={{ opacity }}
+        animate={{ 
+          y: [0, 10, 0] 
+        }}
+        transition={{ 
+          y: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+      >
+        <svg 
+          className="w-8 h-8 text-black"
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+        <p className="text-sm text-black mt-2">Scroll to explore</p>
+      </motion.div>
+
+      <ParallaxImages />
+      <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-white/0 to-white" />
+    </div>
+  );
+};
+
+const CenterImage = () => {
+  const { scrollY } = useScroll();
+
+  const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
+  const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
+
+  const clipPath = useMotionTemplate`polygon(${clip1}% ${clip1}%, ${clip2}% ${clip1}%, ${clip2}% ${clip2}%, ${clip1}% ${clip2}%)`;
+
+  const backgroundSize = useTransform(
+    scrollY,
+    [0, SECTION_HEIGHT + 500],
+    ["170%", "100%"]
+  );
+  const opacity = useTransform(
+    scrollY,
+    [SECTION_HEIGHT, SECTION_HEIGHT + 500],
+    [1, 0]
+  );
+
+  return (
+    <motion.div
+      className="sticky top-0 h-screen w-full"
+      style={{
+        clipPath,
+        backgroundSize,
+        opacity,
+      }}
+    >
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -1,
+        }}
+      >
+        <source src="/videos/ProChefClip.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <h1>
+        hello
+      </h1>
+    </motion.div>
+  );
+};
+
+const ParallaxImages = () => {
+  return (
+    <div className="mx-auto max-w-5xl px-4 pt-[200px]">
+      <ParallaxImg
+        src="/2.png"
+        alt="And example of a space launch"
+        start={-200}
+        end={200}
+        className="w-1/4"
+      />
+      <ParallaxImg
+      src="/ServizoLogofull.png"
+      // src="/images/contact/contactimagewebp.webp"
+
+        alt="An example of a space launch"
+        start={200}
+        end={-250}
+        className="mx-auto w-1/2"
+      />
+      <ParallaxImg
+src="/3.png"        
+alt="Orbiting satellite"
+        start={-200}
+        end={200}
+        className="ml-auto w-1/4"
+      />
+      {/* <ParallaxImg
+      src="/images/contact/contactimagewebp.webp"
+        alt="Orbiting satellite"
+        start={0}
+        end={-500}
+        className="ml-24 w-5/12"
+      /> */}
+    </div>
+  );
+};
+
+const ParallaxImg = ({
+  className,
+  alt,
+  src,
+  start,
+  end,
+}: {
+  className?: string;
+  alt: string;
+  src: string;
+  start: number;
+  end: number;
+}) => {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: [`${start}px end`, `end ${end * -1}px`],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0.75, 1], [1, 0.85]);
+
+  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
+  const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
+
+  return (
+    <motion.img
+      src={src}
+      alt={alt}
+      className={className}
+      ref={ref}
+      style={{ transform, opacity }}
+    />
+  );
+};
+
+export default AboutUsPage;

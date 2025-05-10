@@ -1,0 +1,48 @@
+/* Chef Service Theme Colors */
+:root {
+  --chef-primary: #cc4c03; /* Orange/rust color */
+  --chef-black: #000000;
+  --chef-white: #ffffff;
+  --chef-gray-100: #f3f4f6;
+  --chef-gray-200: #e5e7eb;
+  --chef-gray-300: #d1d5db;
+  --chef-gray-400: #9ca3af;
+  --chef-gray-500: #6b7280;
+  --chef-gray-600: #4b5563;
+  --chef-gray-700: #374151;
+  --chef-gray-800: #1f2937;
+  --chef-gray-900: #111827;
+}
+
+/* Override brand colors */
+.text-brand-primary {
+  color: var(--chef-primary) !important;
+}
+
+.text-brand-secondary {
+  color: var(--chef-primary) !important;
+}
+
+.bg-brand-primary {
+  background-color: var(--chef-primary) !important;
+}
+
+.bg-brand-secondary {
+  background-color: var(--chef-primary) !important;
+}
+
+.border-brand-primary {
+  border-color: var(--chef-primary) !important;
+}
+
+.hover\:bg-brand-secondary:hover {
+  background-color: var(--chef-primary) !important;
+}
+
+.hover\:text-brand-secondary:hover {
+  color: var(--chef-primary) !important;
+}
+
+.hover\:border-brand-secondary:hover {
+  border-color: var(--chef-primary) !important;
+}

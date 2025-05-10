@@ -1,47 +1,45 @@
-// "use client";
-// import { useEffect } from 'react';
-// import gsap from 'gsap';
-// import Navbar from '@/components/navbar';
-// import LandingPage from './systems/landingpage/page';
-
-// // import Navbar from '@/public/navbar';
-// // import Navbar from '../components/navbar';
-
-// const HomePage = () => {
-//   useEffect(() => {
-//     gsap.to('.title', { y: 50, opacity: 1, duration: 2 });
-//   }, []);
-
-//   return (
-//     <div className=" scroll-smooth overflow-hidden">
-//       <Navbar />
-//       {/* <main className="flex flex-col items-center justify-center min-h-screen py-2">
-//         <h1 className="text-4xl font-bold mb-4 opacity-0 title">Welcome to Our Service</h1>
-//       </main> */}
-//       <LandingPage />
-      
-//     </div>
-//   );
-// };
-
-// export default HomePage;
-
-
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
-import Navbar from '@/components/navbar';
+// import Navbar from '@/components/navbar';
 import LandingPage from './systems/landingpage/page';
 import CookieConsent from '@/components/CookieConsent';
+// import LoadingLayout from "@/app/LoadingLayout";
 
 const HomePage = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    gsap.to('.title', { y: 50, opacity: 1, duration: 2 });
+    // Preload your components and assets here
+    Promise.all([
+      // Add your preload promises here
+      // Example: Image preloading
+      // new Promise(resolve => {
+      //   const img = new Image();
+      //   img.onload = resolve;
+      //   img.src = '/path-to-image.jpg';
+      // }),
+      // Add more promises for other assets
+    ]).then(() => {
+      setIsLoaded(true);
+      // GSAP animation
+      gsap.fromTo('.title', 
+        { y: 0, opacity: 0 },
+        { 
+          y: 50, 
+          opacity: 1, 
+          duration: 2,
+          immediateRender: false,
+          ease: 'power2.out'
+        }
+      );
+    });
   }, []);
+
+  if (!isLoaded) return null;
 
   return (
     <div className="scroll-smooth overflow-hidden">
-      <Navbar />
       <LandingPage />
       <CookieConsent /> {/* Add Cookie Consent component here */}
     </div>

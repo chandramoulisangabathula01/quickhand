@@ -2,7 +2,7 @@
 "use client";
 // import Swal from "sweetalert2";
 import React, { useState } from "react";
-import Navbar from "@/components/navbar";
+// import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 // import Link from "next/link";
 
@@ -18,29 +18,28 @@ const ContactPage = () => {
   return  (
     <>
       
-        <Navbar />
-        <div className="container mx-auto px-4 py-4  ">
-          <div className="grid lg:grid-cols-2 gap-8 items-center bg-gray-200 rounded-3xl shadow-lg overflow-hidden">
-            <div className="p-8">
-              <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
+        {/* <Navbar /> */}
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+          <div className="grid lg:grid-cols-2 gap-8 items-center bg-gray-100 rounded-3xl shadow-lg overflow-hidden border-2 border-[#cc4c03]">
+            <div className="p-6 sm:p-8">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-black mb-4 sm:mb-6 inline-block bg-[#cc4c03] px-4 py-1 rounded-lg text-white">
                 Get In Touch
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 mb-6 sm:mb-8">
                 Have a specific inquiry or looking to explore new opportunities?
                 Our experienced team is ready to engage with you.
               </p>
               {/* <form onSubmit={handleSubmit} className="space-y-6"> */}
-              <form  className="space-y-6">
+              <form className="space-y-4 sm:space-y-6">
 
                 <input
-                
                   type="text"
                   name="name"
                   required
                   placeholder="Full Name"
                   value={formData.name}
                   // onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-100 border-b border-gray-200 focus:border-blue-600 outline-none transition"
+                  className="w-full p-3 bg-gray-100 border-b-2 border-gray-200 focus:border-[#cc4c03] outline-none transition focus:bg-white/80"
                 />
                 <input
                   type="tel"
@@ -49,7 +48,7 @@ const ContactPage = () => {
                   placeholder="Phone No"
                   value={formData.number}
                   // onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-100 border-b border-gray-200 focus:border-blue-600 outline-none transition"
+                  className="w-full p-3 bg-gray-100 border-b-2 border-gray-200 focus:border-[#cc4c03] outline-none transition focus:bg-white/80"
                 />
                 <input
                   type="email"
@@ -58,7 +57,7 @@ const ContactPage = () => {
                   placeholder="Email"
                   value={formData.email}
                   // onChange={handleInputChange}
-                  className="w-full p-3 bg-gray-100 border-b border-gray-200 focus:border-blue-600 outline-none transition"
+                  className="w-full p-3 bg-gray-100 border-b-2 border-gray-200 focus:border-[#cc4c03] outline-none transition focus:bg-white/80"
                 />
                 <textarea
                   name="message"
@@ -66,12 +65,12 @@ const ContactPage = () => {
                   required
                   value={formData.message}
                   // onChange={handleInputChange}
-                  className="w-full p-3 border-b bg-gray-100 border-gray-200 focus:border-blue-600 outline-none transition"
+                  className="w-full p-3 border-b-2 bg-gray-100 border-gray-200 focus:border-[#cc4c03] outline-none transition focus:bg-white/80"
                   rows={4}
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full bg-gray-800 hover:bg-gray-900 text-gray-100 font-bold py-3 px-6 rounded-md transition duration-300 flex items-center justify-center"
+                  className="w-full bg-[#cc4c03] hover:bg-black text-white font-bold py-3 px-6 rounded-md transition duration-300 flex items-center justify-center border-2 border-[#cc4c03]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -84,10 +83,10 @@ const ContactPage = () => {
                   Send Message
                 </button>
               </form>
-              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-6">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
                 <a
                   href="mailto:info@sangeetasystems.com"
-                  className="flex items-center text-black hover:underline"
+                  className="flex items-center text-black hover:text-[#cc4c03] hover:underline transition-colors duration-300"
                 >
                   <svg
                     className="h-5 w-5 mr-2"
@@ -101,7 +100,7 @@ const ContactPage = () => {
                 </a>
                 <a
                   href="tel:+917396691030"
-                  className="flex items-center text-black hover:underline"
+                  className="flex items-center text-black hover:text-[#cc4c03] hover:underline transition-colors duration-300"
                 >
                   <svg
                     className="h-5 w-5 mr-2"
@@ -114,11 +113,11 @@ const ContactPage = () => {
                 </a>
               </div>
             </div>
-            <div className=" flex justify-center items-center  ">
+            <div className="flex justify-center items-center">
                 
               
                   {/* <img src="/images/caregiver.png" alt="Map" className="object-contain top-20 h-[500px] w-full" /> */}
-              <img src="/images/contact/contactimagewebp.webp" alt="Caregiver" className="object-contain top-20 h-[500px] w-full" />
+              <img src="/images/contact/contactimagewebp.webp" alt="Caregiver" className="object-contain top-20 h-[400px] sm:h-[500px] w-full" />
                 
               
             </div>

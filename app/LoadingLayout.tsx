@@ -1,16 +1,19 @@
 "use client"; // Mark this file as a Client Component
 
-import { useEffect, useState } from "react";
-import Loading from "@/components/Loading"; // Adjust the path according to your structure
+import { useState, useEffect } from "react";
+import Loading from "@/components/Loading";
+
+// import Loading from "@/components/Loading"; // Adjust the path according to your structure
 
 const LoadingLayout = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   // Simulate initial loading for demonstration purposes
   useEffect(() => {
+    // Simulate content loading
     const timer = setTimeout(() => {
-      setLoading(false); // Hide loading after 3 seconds
-    }, 3000);
+      setLoading(false);
+    }, 3000); // Adjust time as needed
 
     return () => clearTimeout(timer);
   }, []);
