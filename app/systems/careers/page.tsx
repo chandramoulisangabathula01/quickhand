@@ -31,7 +31,7 @@ interface AlertState {
 }
 
 const SubmitApplicationPage = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
     const [captcha, setCaptcha] = useState<CaptchaState>({ question: '', answer: 0 });
     const initialFormData: FormData = {
         name: '',
