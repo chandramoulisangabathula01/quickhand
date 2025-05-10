@@ -9,153 +9,116 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import DownloadSection from '@/components/downloadSection';
-import { useLocomotiveScroll } from 'react-locomotive-scroll';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+// import { useLocomotiveScroll } from 'react-locomotive-scroll'; // Removed
+// import 'locomotive-scroll/dist/locomotive-scroll.css'; // Removed
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ServicesPage: React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null);
-  const { scroll } = useLocomotiveScroll();
+  // const { scroll } = useLocomotiveScroll(); // Removed
 
   useEffect(() => {
-    if (!mainRef.current || !scroll) return;
+    if (!mainRef.current) return;
 
-    scroll.init({
-      el: mainRef.current,
-      smooth: true, 
-      multiplier: 1,
-      class: 'is-inview'
-    });
+    // Locomotive Scroll initialization removed
+    // scroll.init({
+    //   el: mainRef.current,
+    //   smooth: true, 
+    //   multiplier: 1,
+    //   class: 'is-inview'
+    // });
 
     const sections = [
       { className: '.service-section', start: 'top 80%', end: 'bottom 20%' },
-      { className: '.how-it-works-item', start: 'top 70%', end: 'bottom 20%' },
+      // Note: '.how-it-works-item' class is targeted by GSAP but not found in this page's JSX.
+      // If this animation is intended for elements within a child component or was an oversight, it won't apply.
+      { className: '.how-it-works-item', start: 'top 70%', end: 'bottom 20%' }, 
       { className: '.why-choose-us-item', start: 'top 70%', end: 'bottom 20%' },
       { className: '.impact-item', start: 'top 70%', end: 'bottom 20%' },
-      { className: '.download-section', start: 'top 80%', end: 'bottom 20%' },
+      { className: '.download-section', start: 'top 80%', end: 'bottom 20%' }, // Assumes DownloadSection component has this class
     ];
 
     sections.forEach(({ className, start, end }) => {
-      gsap.fromTo(className, 
-        { opacity: 0, y: -50 }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.4, 
-          ease: 'power3.inOut',
-          scrollTrigger: {
-            trigger: className,
-            start: start,
-            end: end,
-            scroller: scroll.el,
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
+      const elements = gsap.utils.toArray(className) as HTMLElement[];
+      if (elements.length > 0) {
+        gsap.fromTo(elements, 
+          { opacity: 0, y: -50 }, 
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.4, 
+            ease: 'power3.inOut',
+            scrollTrigger: {
+              trigger: elements[0], // Use the first element as trigger for a group, or handle individually
+              start: start,
+              end: end,
+              // scroller: scroll.el, // Removed, GSAP defaults to viewport scroll
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
     });
 
     // Parallax effect for background
-    gsap.fromTo('.parallax-bg',
-      { backgroundPosition: '50% 0%' },
-      {
-        backgroundPosition: '50% 100%',
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: '.parallax-bg',
-          start: 'top top',
-          end: 'bottom top',
-          scroller: scroll.el,
-          scrub: true,
-        },
-      }
-    );
+    // Ensure an element with class 'parallax-bg' and a background-image exists for this to be effective.
+    const parallaxBgElement = document.querySelector('.parallax-bg');
+    if (parallaxBgElement) {
+      gsap.fromTo('.parallax-bg',
+        { backgroundPosition: '50% 0%' },
+        {
+          backgroundPosition: '50% 100%',
+          ease: 'none', // Typically 'none' or 'linear' for scrub animations
+          scrollTrigger: {
+            trigger: '.parallax-bg',
+            start: 'top top',
+            end: 'bottom top',
+            // scroller: scroll.el, // Removed
+            scrub: true,
+          },
+        }
+      );
+    }
 
-    // Update ScrollTrigger when locomotive scroll updates
-    scroll.on('scroll', ScrollTrigger.update);
+    // Update ScrollTrigger when locomotive scroll updates - Removed
+    // scroll.on('scroll', ScrollTrigger.update);
+    // GSAP's ScrollTrigger updates automatically with native scroll.
 
-    // Clean up
+    // Clean up GSAP ScrollTriggers
     return () => {
-      scroll.destroy();
+      // scroll.destroy(); // Removed
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
 
-  }, [scroll]);
+  }, []); // Removed scroll from dependencies
 
   return (
-    <div data-scroll-container ref={mainRef} className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900">
+    // Removed data-scroll-container, kept ref if needed for other purposes or future scroller setup
+    <div ref={mainRef} className="services-page bg-gradient-to-b from-gray-100 to-white text-gray-900">
       {/* <Navbar /> */}
 
-      <main data-scroll-section className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      {/* Removed data-scroll-section */}
+      <main className="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <motion.h1
-          data-scroll
-          data-scroll-speed="1"
+          // Removed data-scroll and data-scroll-speed
           className="text-4xl pt-8 font-bold text-center text-black"
           initial={{ opacity: 0, y: -80 }}
-          animate={{ opacity: 1, y: -50 }}
+          animate={{ opacity: 1, y: -50 }} // Note: y: -50 in animate might be slightly off screen top. Consider y:0.
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           Explore Our Services
         </motion.h1>
 
         {/* Driver Services */}
-        <section data-scroll-section className="service-section mb-36">
-          {/* <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
-            <div data-scroll data-scroll-speed="2" className="lg:w-1/2 mb-12 lg:ml-12 lg:pr-12 lg:mb-0">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Image src="/driverService.png" alt="Driver Service" width={600} height={400} className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300" />
-              </motion.div>
-            </div>
-            <div data-scroll data-scroll-speed="1" className="lg:w-1/2">
-              <motion.h2
-                className="text-3xl font-bold mb-8 text-black"
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                Your Personal Driver, One Click Away
-              </motion.h2>
-              <motion.p
-                className="text-xl mb-8 text-gray-700 leading-relaxed"
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                Experience stress-free transportation with our punctual and courteous drivers, ready to make your journey smooth and comfortable.
-              </motion.p>
-              <motion.ul
-                className="space-y-4 mb-8 text-gray-800"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.1 } },
-                }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                {['Safe and reliable transportation', 'Professional and courteous drivers', 'Available for various needs: errands, appointments, and more'].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center text-lg"
-                    variants={{
-                      hidden: { opacity: 0, y: -50 },
-                      visible: { opacity: 1, y: 0 },
-                    }}
-                  >
-                    <svg className="w-6 h-6 mr-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {item}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </div>
-          </div> */}
+        {/* Removed data-scroll-section */}
+        <section className="service-section mb-36">
+          {/* Commented out section was already commented */}
+          {/* <div className="flex flex-col lg:flex-row items-center justify-between mb-24"> ... </div> */}
 
           <div className="flex flex-col lg:flex-row-reverse items-center justify-between">
-            <div data-scroll data-scroll-speed="2" className="lg:w-1/2 mb-12 lg:mr-12 lg:mb-0">
+            {/* Removed data-scroll and data-scroll-speed */}
+            <div className="lg:w-1/2 mb-12 lg:mr-12 lg:mb-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -164,7 +127,8 @@ const ServicesPage: React.FC = () => {
                 <Image src="/images/AiGenimages/chef-with-clients.jpeg" alt="Driver Service" width={600} height={400} className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300" />
               </motion.div>
             </div>
-            <div data-scroll data-scroll-speed="1" className="lg:w-1/2 lg:ml-12">
+            {/* Removed data-scroll and data-scroll-speed */}
+            <div className="lg:w-1/2 lg:ml-12">
               <motion.h2
                 className="text-3xl font-bold mb-8 text-black"
                 initial={{ opacity: 0, y: -50 }}
@@ -211,12 +175,12 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Why Choose Us */}
-        <section data-scroll-section className="why-choose-us-section bg-gradient-to-br from-gray-200 to-gray-300 text-gray-800 p-8 md:p-16 rounded-3xl shadow-2xl mb-32 relative overflow-hidden">
+        {/* Removed data-scroll-section */}
+        <section className="why-choose-us-section bg-gradient-to-br from-gray-200 to-gray-300 text-gray-800 p-8 md:p-16 rounded-3xl shadow-2xl mb-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-pattern opacity-10"></div>
           <div className="relative z-10">
             <motion.h2
-              data-scroll
-              data-scroll-speed="1"
+              // Removed data-scroll and data-scroll-speed
               className="text-3xl md:text-4xl font-bold mb-8 text-center"
               initial={{ opacity: 0.5, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -256,8 +220,7 @@ const ServicesPage: React.FC = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  data-scroll
-                  data-scroll-speed={index * 0.2 + 0.5}
+                  // Removed data-scroll and data-scroll-speed
                   className="why-choose-us-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex justify-center mb-4">{item.icon}</div>
@@ -267,10 +230,9 @@ const ServicesPage: React.FC = () => {
               ))}
             </div>
             <motion.div
-              data-scroll
-              data-scroll-speed="1"
+              // Removed data-scroll and data-scroll-speed
               className="mt-12 text-center"
-              initial={{ opacity: 0.5, y: -20 }}
+              initial={{ opacity: 0.5, y: -20 }} // Consider y: 20 for upward animation
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
@@ -285,11 +247,11 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* New Section: Service Impact */}
-        <section data-scroll-section className="impact-section min-w-fit py-16 pt-20 pb-20">
+        {/* Removed data-scroll-section */}
+        <section className="impact-section min-w-fit py-16 pt-20 pb-20">
           <div className="container px-4">
             <motion.h2
-              data-scroll
-              data-scroll-speed="1"
+              // Removed data-scroll and data-scroll-speed
               className="text-4xl font-bold mb-12 text-center text-gray-900"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -332,8 +294,7 @@ const ServicesPage: React.FC = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  data-scroll
-                  data-scroll-speed={index * 0.2 + 0.5}
+                  // Removed data-scroll and data-scroll-speed
                   className="impact-item bg-gray-100 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex justify-center">{item.icon}</div>
@@ -344,8 +305,7 @@ const ServicesPage: React.FC = () => {
               ))}
             </div>
             <motion.div
-              data-scroll
-              data-scroll-speed="1"
+              // Removed data-scroll and data-scroll-speed
               className="mt-16 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
