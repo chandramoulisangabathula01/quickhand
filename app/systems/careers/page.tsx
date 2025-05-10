@@ -64,9 +64,7 @@ const SubmitApplicationPage = () => {
     }, []);
 
     // Mobile Menu Toggle
-    const toggleMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
+ 
 
     // Form Input Handlers
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
