@@ -40,10 +40,12 @@ import { useState, useEffect } from 'react';
 const Loading = () => {
   const [text, setText] = useState('');
   const fullText = 'Servizo.';
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Text animation
     let index = 0;
-    const interval = setInterval(() => {
+    const textInterval = setInterval(() => {
       setText(fullText.substring(0, index));
       index++;
       if (index > fullText.length) {
@@ -51,14 +53,31 @@ const Loading = () => {
       }
     }, 200);
 
-    return () => clearInterval(interval);
+    // Progress animation
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) return 100;
+        return prev + 1;
+      });
+    }, 30);
+
+    return () => {
+      clearInterval(textInterval);
+      clearInterval(progressInterval);
+    };
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-white">
-      <div className="text-6xl font-bold text-black relative">
+    <div className="fixed inset-0 flex flex-col justify-center items-center bg-white z-50">
+      <div className="text-6xl font-bold text-black relative mb-8">
         {text}
-        <span className="absolute -right-2 top-0 h-full w-1 bg-white animate-blink"></span>
+        <span className="absolute -right-2 top-0 h-full w-1 bg-black animate-blink"></span>
+      </div>
+      <div className="w-64 h-1 bg-gray-200 rounded-full overflow-hidden">
+        <div 
+          className="h-full bg-black transition-all duration-300 ease-out"
+          style={{ width: `${progress}%` }}
+        ></div>
       </div>
       <style jsx>{`
         @keyframes blink {

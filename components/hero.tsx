@@ -6,24 +6,25 @@ import React from 'react';
 
 function Hero() {
   return (
-    <section className="hero pb-10 bg-gradient-to-br from-gray-100 to-white">
+    <section className="hero pb-10 bg-gradient-to-br from-white to-gray-100">
       <style jsx>{`
         {
-          background-color: #E5D9F2;
+          background-color: #ffffff;
         }
       `}</style>
+      
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:w-1/2 mb-10 lg:mb-0 flex flex-col mt-12 items-start px-4 sm:px-6 lg:px-12 bg-gradient-to-br rounded-3xl">
-            <p className="text-sm sm:text-md lg:text-lg font-semibold mb-4 uppercase text-green-700 text-left leading-tight">Simplified Living, Elevated Experiences</p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-brand-primary text-left lg:leading-tight">Get Services Delivered at Your Doorstep!</h1>
-            <p className="text-sm sm:text-md lg:text-xl mb-8 text-gray-400 text-left lg:py-4">Simplified, reliable, and professional {'->'} just a tap away.</p>
+            <p className="text-sm sm:text-md lg:text-lg font-semibold mb-4 uppercase text-[#cc4c03] text-left leading-tight">Culinary Excellence at Your Doorstep</p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-black text-left lg:leading-tight">Professional Chef Services On Demand!</h1>
+            <p className="text-sm sm:text-md lg:text-xl mb-8 text-gray-400 text-left lg:py-4">Gourmet dining experiences in the comfort of your home {'->'} just a tap away.</p>
 
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="/systems/services" className="inline-flex items-center justify-center px-8 sm:px-16 py-3 sm:py-6 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-md text-white bg-black hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
-                View our Services
+              <Link href="/systems/services" className="inline-flex items-center justify-center px-8 sm:px-16 py-3 sm:py-6 border border-transparent text-lg sm:text-xl font-medium rounded-md shadow-md text-white bg-black hover:bg-[#cc4c03] transition-all duration-300 transform hover:scale-105">
+                View Chef Services
               </Link>
-              <Link href="#download" className="inline-flex hover:border-green-500 items-center justify-center border-2 border-black rounded-md bg-transparent py-3 px-6 text-black bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
+              <Link href="#download" className="inline-flex hover:border-[#cc4c03] items-center justify-center border-2 border-black rounded-md bg-transparent py-3 px-6 text-black bg-white transition-all duration-200 ease-in-out transform hover:scale-105">
                 <span className="flex flex-col items-start leading-none">
                   <p className="text-lg sm:text-xl font-bold">Download App</p>
                 </span>
@@ -59,11 +60,13 @@ const SkeletonOne = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        chef at your service
+        <a href="/services/chef" className="text-white hover:text-[#cc4c03] transition-colors" aria-label="Learn more about our chef services">
+          Chef at Your Service
+        </a>
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-        Our chefs are professional, reliable, and always ready to assist you with a smile.
+        Our chefs are professional, reliable, and always ready to create culinary masterpieces for you.
       </p>
     </div>
   );
@@ -73,11 +76,13 @@ const SkeletonTwo = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        soon with better services
+        <a href="/services/chef" className="text-white hover:text-[#cc4c03] transition-colors" aria-label="Learn about our chef specialties">
+          Gourmet Dining Experience
+        </a>
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
-       caregiver services are coming soon with more quality services
+       From intimate dinners to large gatherings, our chefs create memorable culinary experiences
       </p>
     </div>
   );
@@ -87,7 +92,9 @@ const SkeletonThree = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-       all quality services at one App
+        <a href="/services/chef" className="text-white hover:text-[#cc4c03] transition-colors" aria-label="View our chef specialties">
+          Specialized Chef Services
+        </a>
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
@@ -101,7 +108,9 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white">
-        driver at your service
+        <a href="/services/driver" className="text-white hover:text-brand-secondary transition-colors" aria-label="Learn more about our driver services">
+          Driver at Your Service
+        </a>
       </p>
       <p className="font-normal text-sm sm:text-base text-white"></p>
       <p className="font-normal text-xs sm:text-sm lg:text-base my-2 sm:my-4 max-w-lg text-neutral-200">
@@ -117,29 +126,51 @@ const cards = [
     content: <SkeletonOne />,
     className: "md:col-span-2",
     video: "/videos/ProChefClip.mp4",
-    thumbnail: "",
+    thumbnail: {
+      src: "",
+      width: 0,
+      height: 0,
+      alt: ""
+    }
   },
   {
     id: 2,
     content: <SkeletonTwo />,
     className: "col-span-1",
     video: "",
-    thumbnail: "/images/landingpage/heroPage/soon.webp",
+    thumbnail: {
+      src: "/images/AiGenimages/chef-pose1.jpeg",
+      width: 800,
+      height: 600,
+      alt: "Coming Soon"
+    },
   },
   {
     id: 3,
     content: <SkeletonThree />,
     className: "col-span-1",
-    video: "/videos/AllMixMIniClip.mp4",
-    thumbnail: "",
+    // video: "/videos/AllMixMIniClip.mp4",
+    video: "",
+    thumbnail: {
+      src: "/images/AiGenimages/female-chef.jpeg",
+      // width: 0,
+      // height: 0,
+      width: 800,
+      height: 600,
+      alt: ""
+    }
   },
   {
     id: 4,
     content: <SkeletonFour />,
-    className: "md:col-span-2",
-    // video: "/videos/elderlyCareClip.mp4",
-    video: "/videos/ProDriverClip.mp4",
-
-    thumbnail: "",
+    className: "col-span-2",
+    // video: "/videos/AllMixMIniClip.mp4",
+    video: "",
+    thumbnail: {
+      src: "/images/AiGenimages/chef-with-clients.jpeg",
+      width: 800,
+      height: 600,
+      alt: ""
+    }
   },
 ];

@@ -1,0 +1,30 @@
+QuickHand Project Documentation
+
+Project Structure:
+- app/
+  - LoadingLayout.tsx: Loading layout component with loading state
+  - api/route.ts: API route handlers
+  - fonts/: Custom font files
+  - globals.css: Global styles
+  - layout.tsx: Main application layout
+  - loading.tsx: Loading component
+  - page.tsx: Home page component
+  - systems/: Subsystem pages
+    - landingpage/page.tsx: Landing page component
+    - services/page.tsx: Services page component
+
+Main Components:
+1. Navbar: Navigation bar component
+2. LandingPage: Main landing page component
+3. CookieConsent: Cookie consent banner
+4. Loading: Loading spinner component
+5. Footer: Page footer component
+
+Key Features:
+- GSAP animations for smooth transitions
+- Locomotive scroll for smooth scrolling
+- Responsive design with Tailwind CSS
+- Component-based architecture
+
+
+This documentation provides an overview of the project structure and main components. For detailed implementation, refer to the individual files
